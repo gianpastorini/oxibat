@@ -1,0 +1,361 @@
+<!DOCTYPE html>
+<html lang="en">
+
+  <head>
+    <meta charset="UTF-8">
+    <title>oxibat</title>
+    
+
+  </head>
+    
+  <body>
+  <!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Oxibat - Innovación Chilena para la Minería</title>
+    <style>
+        /* --- ESTILOS GENERALES --- */
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            scroll-behavior: smooth;
+        }
+        .container {
+            max-width: 1200px;
+            margin: auto;
+            padding: 20px;
+        }
+        h2 {
+            font-size: 2.5em;
+            margin-bottom: 20px;
+            color: #333;
+            text-align: center;
+        }
+        p {
+            font-size: 1.1em;
+            line-height: 1.6;
+            color: #555;
+        }
+
+        /* --- SECCIÓN HERO --- */
+        .hero {
+            background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url('URL_DE_LA_IMAGEN_3_MINERIA_A_GRAN_ESCALA.jpeg');
+            background-size: cover;
+            background-position: center;
+            color: white;
+            text-align: center;
+            padding: 120px 20px;
+        }
+        .hero-logo {
+            width: 200px;
+            margin-bottom: 20px;
+        }
+        .hero h1 {
+            font-size: 3.5em;
+            margin-bottom: 10px;
+            text-shadow: 2px 2px 4px #000000;
+        }
+        .hero p {
+            font-size: 1.5em;
+            margin-bottom: 30px;
+            text-shadow: 1px 1px 2px #000000;
+            color: white;
+        }
+        .cta-button {
+            background-color: #388E3C; /* Verde Principal Oxibat */
+            color: white;
+            padding: 15px 30px;
+            text-decoration: none;
+            font-size: 1.2em;
+            border-radius: 5px;
+            font-weight: bold;
+            display: inline-block;
+            transition: background-color 0.3s;
+        }
+        .cta-button:hover {
+            background-color: #2E7D32; /* Verde Oscuro para hover */
+        }
+
+        /* --- SECCIÓN BENEFICIOS --- */
+        .benefits {
+            background-color: #f4f4f4;
+            padding: 60px 20px;
+            text-align: center;
+        }
+        .benefits-grid {
+            display: flex;
+            justify-content: space-around;
+            flex-wrap: wrap;
+        }
+        .benefit-item {
+            width: 180px;
+            margin: 15px;
+            background: white;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+            transition: transform 0.3s;
+        }
+        .benefit-item:hover {
+            transform: translateY(-10px);
+        }
+        .benefit-item img {
+            width: 60px;
+            height: 60px;
+            margin-bottom: 15px;
+        }
+        .benefit-item h3 {
+            font-size: 1.2em;
+            color: #333;
+        }
+
+        /* --- SECCIÓN VIDEO --- */
+        .video-section {
+            padding: 40px 20px;
+            text-align: center;
+            background-color: #f4f4f4;
+        }
+        .video-container {
+            position: relative;
+            overflow: hidden;
+            width: 100%;
+            max-width: 854px;
+            margin: 0 auto;
+            padding-top: 56.25%; /* 16:9 Aspect Ratio */
+        }
+        .video-container iframe {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            border: none;
+            border-radius: 8px;
+        }
+
+        /* --- SECCIÓN SOLUCIÓN --- */
+        .solution {
+            padding: 60px 20px;
+            text-align: center;
+            background-color: #ffffff;
+        }
+        .solution img {
+            max-width: 100%;
+            height: auto;
+            border-radius: 10px;
+            margin-bottom: 30px;
+            box-shadow: 0 8px 16px rgba(0,0,0,0.2);
+        }
+        .process-list {
+            text-align: left;
+            max-width: 900px;
+            margin: 40px auto;
+            border-left: 4px solid #388E3C; /* Verde Principal Oxibat */
+            padding-left: 20px;
+            background: #f9f9f9;
+            padding: 20px 20px 20px 40px;
+            border-radius: 8px;
+        }
+        .process-list h3 {
+            font-size: 1.8em;
+            color: #333;
+            margin-top:0;
+        }
+        .process-list ol {
+            font-size: 1.1em;
+            color: #555;
+            line-height: 1.8;
+            padding-left: 20px;
+        }
+        .process-list li {
+            margin-bottom: 10px;
+        }
+        
+        /* --- SECCIÓN SOBRE NOSOTROS --- */
+        .about {
+            padding: 60px 20px;
+            text-align: center;
+            background-color: #f4f4f4;
+        }
+        .about-content {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            max-width: 800px;
+            margin: auto;
+            gap: 40px;
+            background: white;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+        }
+        .about img {
+            width: 250px;
+            height: 250px;
+            border-radius: 50%;
+            object-fit: cover;
+            box-shadow: 0 8px 16px rgba(0,0,0,0.2);
+        }
+        .about-text {
+            text-align: left;
+        }
+        .about-text h3 {
+            font-size: 1.8em;
+            color: #333;
+        }
+
+        /* --- SECCIÓN CONTACTO --- */
+        .contact {
+            background-color: #333;
+            color: white;
+            padding: 60px 20px;
+            text-align: center;
+        }
+        .contact-grid {
+            display: flex;
+            justify-content: space-around;
+            flex-wrap: wrap;
+            max-width: 800px;
+            margin: auto;
+            gap: 40px;
+            text-align: left;
+        }
+        .contact-form, .contact-direct {
+            flex: 1;
+            min-width: 300px;
+        }
+        .contact-form input, .contact-form button {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 15px;
+            border: none;
+            border-radius: 4px;
+        }
+        .contact-form button {
+            background-color: #388E3C; /* Verde Principal Oxibat */
+            color: white;
+            font-size: 1.1em;
+            font-weight: bold;
+            cursor: pointer;
+        }
+        .contact-direct {
+            border-left: 1px solid #555;
+            padding-left: 40px;
+        }
+        .whatsapp-button {
+            background-color: #388E3C; /* Verde Principal Oxibat */
+            color: white;
+            padding: 15px 30px;
+            text-decoration: none;
+            font-size: 1.1em;
+            border-radius: 5px;
+            font-weight: bold;
+            display: inline-block;
+            margin-top: 10px;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- ======================================= SECCIÓN 1: HERO ======================================= -->
+    <section class="hero">
+        <img src="URL_DEL_LOGO_OXIBAT.png" alt="Oxibat Logo" class="hero-logo">
+        <h1>Innovación Chilena para la Seguridad y Bienestar Minero.</h1>
+        <p>No solo normalizamos el oxígeno. Purificamos el aire, filtramos partículas y humidificamos el ambiente. Creamos espacios de trabajo seguros y saludables, 100% chilenos.</p>
+        <a href="#contacto" class="cta-button">Agendar una Llamada con un Experto</a>
+    </section>
+
+    <!-- ======================================= SECCIÓN 2: BENEFICIOS ======================================= -->
+    <section class="benefits">
+        <div class="container">
+            <h2>Una Solución, Múltiples Beneficios Estratégicos</h2>
+            <div class="benefits-grid">
+                <div class="benefit-item"><img src="URL_ICONO_SEGURIDAD.png" alt="Seguridad"><h3>Seguridad Inquebrantable</h3><p>Asegura niveles de oxigenación óptimos 24/7, eliminando el riesgo de errores por hipoxia.</p></div>
+                <div class="benefit-item"><img src="URL_ICONO_RENDIMIENTO.png" alt="Rendimiento"><h3>Rendimiento Humano</h3><p>Maximiza la productividad con un equipo alerta y con la claridad mental de estar a nivel del mar.</p></div>
+                <div class="benefit-item"><img src="URL_ICONO_ECONOMIA.png" alt="Economía Circular"><h3>Economía Circular</h3><p>Genera biomasa para salmones y biofertilizantes, transformando un coste en nuevos flujos de ingresos.</p></div>
+                <div class="benefit-item"><img src="URL_ICONO_CHILE.png" alt="Orgullo Chileno"><h3>Orgullo e Innovación Chilena</h3><p>Ingeniería y fabricación 100% nacional, potenciando el desarrollo y el talento local.</p></div>
+                <div class="benefit-item"><img src="URL_ICONO_AIRE_PURO.png" alt="Aire Puro"><h3>Aire Puro y Filtrado</h3><p>Retiene el material particulado fino (PM2.5), reduciendo riesgos respiratorios y mejorando la salud.</p></div>
+                <div class="benefit-item"><img src="URL_ICONO_HUMEDAD.png" alt="Ambiente Humedecido"><h3>Ambiente Humedecido</h3><p>Combate la resequiedad de la altura, mejorando el confort y el bienestar general.</p></div>
+                <div class="benefit-item"><img src="URL_ICONO_PLANIFICACION.png" alt="Planificación"><h3>Instalación Inteligente</h3><p>Utilizamos drones para mapear la zona en 3D, optimizando la logística y garantizando una instalación segura.</p></div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ======================================= SECCIÓN 3: VIDEO ======================================= -->
+    <section class="video-section">
+        <div class="container">
+            <h2>Oxibat en Acción: Respira Mejor, Trabaja Mejor</h2>
+            <p>Descubre en menos de dos minutos cómo nuestra tecnología está transformando la minería de altura.</p>
+            <div class="video-container">
+                <iframe src="https://www.youtube.com/embed/jCe5uW9SM3s?rel=0&showinfo=0" title="Oxibat Video" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+            </div>
+        </div>
+    </section>
+
+    <!-- ======================================= SECCIÓN 4: SOLUCIÓN LLAVE EN MANO ======================================= -->
+    <section class="solution">
+        <div class="container">
+            <h2>Solución Llave en Mano: De la Ingeniería a la Operación</h2>
+            <img src="URL_DE_LA_IMAGEN_1_BIOGENERADOR.jpeg" alt="Módulo Oxibat en Operación">
+            <p><strong>Oxibat no es solo un proveedor de equipos. Somos tu socio estratégico para la implementación completa de ambientes seguros y eficientes. Nos encargamos de todo, para que tú solo te preocupes por operar.</strong></p>
+            <div class="process-list">
+                <h3>Nuestro Proceso Integral:</h3>
+                <ol>
+                    <li><strong>Análisis y Planificación 3D:</strong> Utilizamos drones para mapear la zona, optimizando la logística y el diseño.</li>
+                    <li><strong>Ingeniería Civil:</strong> Nuestro equipo construye las bases de hormigón sólidas para anclar los sistemas de 4.5 toneladas.</li>
+                    <li><strong>Suministro e Instalación:</strong> Instalamos y conectamos los biogeneradores modulares según el diseño.</li>
+                    <li><strong>Eficiencia Energética:</strong> Sellamos el entorno para minimizar las pérdidas de oxígeno, asegurando la máxima eficiencia.</li>
+                    <li><strong>Puesta en Marcha y Monitoreo:</strong> Configuramos el sistema de monitoreo remoto para una operación autónoma.</li>
+                </ol>
+            </div>
+            <p style="font-size: 1.2em; color: #333; font-weight: bold;">Un único proveedor, una única responsabilidad. Deja la ingeniería en nuestras manos.</p>
+        </div>
+    </section>
+
+    <!-- ======================================= SECCIÓN 5: SOBRE NOSOTROS ======================================= -->
+    <section class="about">
+        <div class="container">
+            <h2>Ingeniería Minera para Solucionar un Problema Minero</h2>
+            <div class="about-content">
+                <img src="URL_DE_TU_FOTO_PROFESIONAL.jpg" alt="Gianfranco Pastorini, Fundador de Oxibat">
+                <div class="about-text">
+                    <h3>Gianfranco Pastorini</h3>
+                    <p>Fundador de Oxibat. Ingeniero Metalúrgico de la Universidad de Concepción, con profunda experiencia en el sector minero chileno. Oxibat nació de identificar una falencia crítica en las faenas de altura y aplicar una solución de vanguardia, combinando la robustez de la ingeniería industrial con la innovación de la biotecnología para crear un futuro más seguro y productivo para la minería chilena.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ======================================= SECCIÓN 6: CONTACTO ======================================= -->
+    <section id="contacto" class="contact">
+        <div class="container">
+            <h2>Lleva Oxibat a tu Operación</h2>
+            <p>Agenda una llamada confidencial para evaluar cómo Oxibat puede transformar tu faena.</p>
+            <div class="contact-grid">
+                <div class="contact-form">
+                    <h3>Envíanos un Mensaje</h3>
+                    <form action="mailto:tuemail@oxibat.cl" method="post" enctype="text/plain">
+                        <input type="text" name="nombre" placeholder="Nombre" required>
+                        <input type="text" name="empresa" placeholder="Empresa" required>
+                        <input type="email" name="email" placeholder="Email" required>
+                        <button type="submit" class="cta-button">Enviar Solicitud</button>
+                    </form>
+                </div>
+                <div class="contact-direct">
+                    <h3>Contacto Directo</h3>
+                    <p>Para una respuesta más rápida, contáctanos directamente por WhatsApp.</p>
+                    <a href="https://wa.me/56989087537" target="_blank" class="whatsapp-button">Hablar por WhatsApp</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+</body>
+</html>
+    
+  </body>
+  
+</html>
