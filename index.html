@@ -244,12 +244,13 @@
         }
 
         .problem-list li::before {
-            content: "";
-            width: 6px; height: 6px;
-            border-radius: 999px;
-            background-color: var(--accent);
+            content: "✖";
+            color: #dc2626; /* rojo problemas */
+            font-weight: 700;
+            font-size: 1rem;
             position: absolute;
-            left: .4rem; top: .55rem;
+            left: 0;
+            top: 0;
         }
 
         .problem-card {
@@ -306,7 +307,8 @@
             position: absolute;
             left: 0;
             color: var(--accent);
-            font-size: .8rem;
+            font-size: .9rem;
+            font-weight: 700;
         }
 
         /* NOTA DE PATENTE */
@@ -623,7 +625,7 @@
                     <li>Integración a ductos HVAC existentes.</li>
                     <li>Sensores de nivel y temperatura.</li>
                     <li>Diseño estructural para nieve y radiación.</li>
-                    <li>Biomasa residual utilizable como biofertilizante (spirulina deshidratada).</li>
+                    <li>Biomasa residual utilizable como biofertilizante (Spirulina deshidratada).</li>
                 </ul>
             </div>
         </div>
@@ -829,3 +831,4 @@
 
 </body>
 </html>
+
