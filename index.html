@@ -262,6 +262,80 @@
             color: var(--text-muted);
         }
 
+        /* CALIDAD DE AIRE: ANTES / DESPUÉS */
+        .air-quality {
+            background-color: #f9fafb;
+        }
+
+        .air-grid {
+            margin-top: 2rem;
+            display: grid;
+            grid-template-columns: repeat(2,minmax(0,1fr));
+            gap: 1.5rem;
+        }
+
+        .state-card {
+            border-radius: 1rem;
+            padding: 1.3rem 1.4rem;
+            border: 1px solid #e5e7eb;
+            font-size: .9rem;
+        }
+
+        .state-card h3 {
+            margin-top: 0;
+            margin-bottom: .4rem;
+            font-size: 1rem;
+        }
+
+        .state-label {
+            display: inline-flex;
+            align-items: center;
+            gap: .35rem;
+            font-size: .8rem;
+            font-weight: 600;
+            letter-spacing: .08em;
+            text-transform: uppercase;
+        }
+
+        .state-bad {
+            background-color: #fef2f2;
+            border-color: #fecaca;
+        }
+
+        .state-bad .state-label {
+            color: #b91c1c;
+        }
+
+        .state-bad .state-label::before {
+            content: "✖";
+            font-weight: 700;
+        }
+
+        .state-good {
+            background-color: #ecfdf5;
+            border-color: #bbf7d0;
+        }
+
+        .state-good .state-label {
+            color: #047857;
+        }
+
+        .state-good .state-label::before {
+            content: "✔";
+            font-weight: 700;
+        }
+
+        .state-list {
+            list-style: none;
+            padding: 0;
+            margin: .6rem 0 0 0;
+        }
+
+        .state-list li {
+            font-size: .88rem;
+            margin-bottom: .4rem;
+        }
+
         /* QUÉ ES OXIBAT */
         .pill {
             display: inline-block;
@@ -273,7 +347,6 @@
             margin-bottom: .5rem;
         }
 
-        /* AJUSTE: caja verde agua suave */
         .definition-box {
             margin-top: 1.5rem;
             padding: 1.5rem 1.8rem;
@@ -483,7 +556,8 @@
             .problem-grid,
             .cols-2,
             .about-grid,
-            .contact-grid {
+            .contact-grid,
+            .air-grid {
                 grid-template-columns: 1fr;
             }
 
@@ -594,6 +668,7 @@
                 <ul class="problem-list">
                     <li>Fatiga y menor concentración en turnos prolongados.</li>
                     <li>Incremento de errores operacionales por hipoxia leve.</li>
+                    <li>Mayor rotación de personal y costos por capacitación y reemplazos.</li>
                     <li>Dependencia de cilindros o PSA con logística compleja.</li>
                     <li>Ambientes con ventilación no homogénea.</li>
                 </ul>
@@ -603,6 +678,40 @@
                 <strong>En simple:</strong><br><br>
                 No se trata solo de confort, sino de reducir la probabilidad de errores en ambientes
                 donde cada decisión tiene impacto en seguridad y continuidad operacional.
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- CALIDAD DE AIRE: ANTES / DESPUÉS -->
+<section class="air-quality">
+    <div class="container">
+        <h2>Calidad de aire: antes y después con Oxibat.</h2>
+        <p class="section-subtitle">
+            El sistema no solo genera oxígeno: la solución líquida retiene parte del material particulado fino,
+            contribuyendo a ambientes interiores más limpios.
+        </p>
+
+        <div class="air-grid">
+            <div class="state-card state-bad">
+                <div class="state-label">Antes · Entorno “Malo”</div>
+                <h3>Ambiente típico en altura</h3>
+                <ul class="state-list">
+                    <li>Oxígeno reducido y mayor carga fisiológica.</li>
+                    <li>Material particulado fino en suspensión que ingresa por ventilación.</li>
+                    <li>Mayor rotación de personal → más licencias y costos por capacitación.</li>
+                    <li>Fatiga e irritación → mayor probabilidad de errores operacionales.</li>
+                </ul>
+            </div>
+
+            <div class="state-card state-good">
+                <div class="state-label">Después · Entorno “Bueno”</div>
+                <h3>Ambiente con Oxibat en operación</h3>
+                <ul class="state-list">
+                    <li>Generación y manejo de oxígeno desde bioreactores.</li>
+                    <li>Disminución de material particulado fino capturado en la solución.</li>
+                    <li>Ambiente más limpio para salas de control, casinos y dormitorios.</li>
+                </ul>
             </div>
         </div>
     </div>
@@ -634,7 +743,7 @@
                     <li>Integración a ductos HVAC existentes.</li>
                     <li>Sensores de nivel y temperatura.</li>
                     <li>Diseño estructural para nieve y radiación.</li>
-                    <li>Biomasa residual utilizable como biofertilizante (Spirulina deshidratada).</li>
+                    <li>Disminución de material particulado fino retenido en la solución, con biomasa residual utilizable como biofertilizante (Spirulina deshidratada).</li>
                 </ul>
             </div>
         </div>
@@ -700,6 +809,15 @@
                 <h3>Ingeniería local</h3>
                 <p>Diseño, construcción y soporte en Chile.</p>
             </article>
+
+            <article class="benefit-card">
+                <div class="benefit-tag">HSEC</div>
+                <h3>Disminución de material particulado fino</h3>
+                <p>
+                    La solución líquida actúa como medio de captura de MP fino que ingresa por ventilación,
+                    contribuyendo a mejorar calidad de aire interior en salas de control, casinos y dormitorios.
+                </p>
+            </article>
         </div>
     </div>
 </section>
@@ -720,7 +838,7 @@
             </div>
 
             <div class="step">
-                <div class="step-num">02 · Ingeniería</div>
+                <div .class="step-num">02 · Ingeniería</div>
                 <h3>Diseño preliminar</h3>
                 <p>Configuración modular + integración HVAC.</p>
             </div>
