@@ -809,13 +809,17 @@
 
     /* ── SCROLL REVEAL ── */
     .reveal {
-      opacity: 0;
-      transform: translateY(40px);
-      transition: opacity 0.8s ease, transform 0.8s ease;
-    }
-    .reveal.visible {
       opacity: 1;
       transform: translateY(0);
+      transition: opacity 0.8s ease, transform 0.8s ease;
+    }
+    .reveal.pre-reveal {
+      opacity: 0;
+      transform: translateY(40px);
+    }
+    .reveal.visible {
+      opacity: 1 !important;
+      transform: translateY(0) !important;
     }
 
     /* ── RESPONSIVE ── */
@@ -857,14 +861,15 @@
 <div id="hero">
   <div class="stars"></div>
   <div class="hero-glow"></div>
-  <p class="hero-eyebrow">Biotecnología aplicada a altura extrema · Patente INAPI</p>
-  <h1 class="hero-title">EL AIRE<br>QUE TU<br>EQUIPO<br><span>MERECE</span></h1>
-  <p class="hero-sub">Sistema modular de biogeneración de oxígeno basado en Spirulina maxima. Diseñado para faenas mineras y observatorios sobre 3.000 msnm donde el talento escasea por las condiciones.</p>
-  <div class="hero-actions">
+  <div style="position:absolute;inset:0;background:radial-gradient(ellipse at center, rgba(5,5,8,0.6) 0%, rgba(5,5,8,0.85) 100%);"></div>
+  <p class="hero-eyebrow" style="position:relative;z-index:2;">Biotecnología aplicada a altura extrema · Patente INAPI</p>
+  <h1 class="hero-title" style="position:relative;z-index:2;">EL AIRE<br>QUE TU<br>EQUIPO<br><span>MERECE</span></h1>
+  <p class="hero-sub" style="position:relative;z-index:2;">Sistema modular de biogeneración de oxígeno basado en Spirulina maxima. Diseñado para faenas mineras y observatorios sobre 3.000 msnm donde el talento escasea por las condiciones.</p>
+  <div class="hero-actions" style="position:relative;z-index:2;">
     <a href="#contacto" class="btn-primary">Agendar Reunión Técnica</a>
     <a href="#tecnologia" class="btn-ghost">Ver Tecnología</a>
   </div>
-  <div class="hero-scroll">
+  <div class="hero-scroll" style="z-index:2;">
     <span>Scroll</span>
     <div class="scroll-line"></div>
   </div>
@@ -1062,13 +1067,13 @@
 <div id="maxime">
   <div class="maxime-inner">
     <span class="section-tag reveal">Sistema Maxime</span>
-    <h2 class="reveal">CUATRO OXIBAT.<br>UN CONTAINER.<br>LISTA EN HORAS.</h2>
-    <p class="section-lead reveal">El sistema Maxime integra 4 unidades Oxibat en un container estándar de 20 pies. Llega en camión, se conecta al HVAC y comienza a operar. Sin obra civil, sin personal especializado en montaje, sin interrumpir la faena.</p>
+    <h2 class="reveal">CUATRO OXIBAT.<br>UN CONTAINER<br>QUE LOS LLEVA<br>A TERRENO.</h2>
+    <p class="section-lead reveal">El sistema Maxime es el diseño logístico que permite transportar 4 unidades Oxibat en un container estándar de 20 pies, optimizando el espacio para que lleguen intactas a cualquier faena. Oxibat se encarga de todo el proceso: fabricación, transporte, fundaciones de hormigón, montaje y conexión al HVAC. El cliente no mueve un dedo.</p>
     <div class="maxime-visual reveal">
       <div style="grid-column: 1 / -1; margin-bottom: 24px; display: flex; justify-content: space-between; align-items: center;">
         <div>
-          <div style="font-family:'DM Mono',monospace; font-size:0.68rem; color:var(--green); letter-spacing:3px; margin-bottom:8px;">CONTAINER 20 PIES — 6.1m × 2.4m × 2.6m</div>
-          <div style="font-size:0.85rem; color:var(--gray);">8.000 litros totales de Spirulina activa</div>
+          <div style="font-family:'DM Mono',monospace; font-size:0.68rem; color:var(--green); letter-spacing:3px; margin-bottom:8px;">CONTAINER 20 PIES — TRANSPORTE Y LOGÍSTICA</div>
+          <div style="font-size:0.85rem; color:var(--gray);">4 unidades Oxibat · 8.000 litros totales de Spirulina</div>
         </div>
         <div style="font-family:'DM Mono',monospace; font-size:0.72rem; color:var(--green); letter-spacing:2px;">VALOR SEGÚN DOTACIÓN Y FAENA</div>
       </div>
@@ -1108,7 +1113,7 @@
       </div>
       <div class="maxime-benefit reveal">
         <h4>Activo Propio</h4>
-        <p>El container es propiedad de Oxibat. El cliente no invierte en activo. Solo arrienda el servicio.</p>
+        <p>Oxibat gestiona el transporte completo desde fábrica hasta la faena, independiente de la altitud o acceso.</p>
       </div>
       <div class="maxime-benefit reveal">
         <h4>Retiro Flexible</h4>
@@ -1225,7 +1230,7 @@
     <div class="patent-card reveal">
       <div class="patent-num">PATENTE 02 · INAPI CHILE</div>
       <h3>Sistema Maxime</h3>
-      <p>Protege el sistema modular de 4 unidades Oxibat integradas en un container estándar de 20 pies. Cubre el diseño de integración, la arquitectura modular y el sistema de conexión a ventilación existente.</p>
+      <p>Protege el diseño logístico que permite transportar y desplegar 4 unidades Oxibat usando un container estándar de 20 pies como solución de traslado optimizado. Cubre la arquitectura de disposición, el sistema de fijación y el proceso de instalación en terreno.</p>
     </div>
   </div>
 </section>
@@ -1273,7 +1278,7 @@
     <div class="step reveal">
       <div class="step-num">03</div>
       <h4>Instalación</h4>
-      <p>Transporte, montaje y conexión a cargo de Oxibat. La faena no interrumpe operación. Sistema operativo en horas.</p>
+      <p>Oxibat gestiona el proceso completo: fabricación de bases de hormigón para soporte del equipo, montaje de las unidades, conexión al HVAC y puesta en marcha. La faena no interrumpe su operación.</p>
     </div>
     <div class="step reveal">
       <div class="step-num">04</div>
