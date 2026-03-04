@@ -1,968 +1,1358 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-    <meta charset="UTF-8">
-    <title>Oxibat – Oxígeno Estable para Faenas de Altura</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-    <!-- Favicon -->
-    <link rel="icon" type="image/jpeg" href="logo.jpeg">
-
-    <!-- Estilos base -->
-    <style>
-        :root {
-            --bg-main: #0b1120;
-            --bg-light: #f5f5f5;
-            --bg-card: #ffffff;
-            --accent: #16a34a;
-            --accent-soft: #dcfce7;
-            --text-main: #111827;
-            --text-muted: #6b7280;
-        }
-
-        * { box-sizing: border-box; }
-
-        body {
-            margin: 0;
-            font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
-            color: var(--text-main);
-            background-color: white;
-        }
-
-        a { text-decoration: none; }
-
-        .container {
-            max-width: 1100px;
-            margin: 0 auto;
-            padding: 0 1.5rem;
-        }
-
-        /* NAV */
-        header {
-            background-color: var(--bg-main);
-            color: #e5e7eb;
-            border-bottom: 1px solid #111827;
-        }
-
-        .nav {
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            padding: 1rem 0;
-        }
-
-        .nav-left {
-            display: flex;
-            align-items: center;
-            gap: .75rem;
-        }
-
-        .nav-logo {
-            width: 42px;
-            height: 42px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-        }
-
-        .nav-title {
-            display: flex;
-            flex-direction: column;
-        }
-
-        .nav-title span:first-child {
-            font-weight: 600;
-            letter-spacing: 0.04em;
-            text-transform: uppercase;
-            font-size: .9rem;
-        }
-
-        .nav-title span:last-child {
-            font-size: .8rem;
-            color: #9ca3af;
-        }
-
-        .nav-right a {
-            font-size: .9rem;
-            color: #e5e7eb;
-            margin-left: 1.5rem;
-            opacity: .85;
-        }
-
-        .nav-right a:hover { opacity: 1; }
-
-        /* HERO */
-        .hero {
-            background:
-                linear-gradient(rgba(15,23,42,.85), rgba(15,23,42,.9)),
-                url("oxi.jpeg") center/cover no-repeat;
-            color: #f9fafb;
-            padding: 3.5rem 0 3rem 0;
-        }
-
-        .hero-grid {
-            display: grid;
-            grid-template-columns: minmax(0,3fr) minmax(0,2.5fr);
-            gap: 2.5rem;
-            align-items: center;
-        }
-
-        .hero-kicker {
-            font-size: .8rem;
-            text-transform: uppercase;
-            letter-spacing: .16em;
-            color: #9ca3af;
-            margin-bottom: .75rem;
-        }
-
-        .hero h1 {
-            font-size: 2.4rem;
-            line-height: 1.1;
-            margin: 0 0 1rem 0;
-        }
-
-        .hero h1 span { color: #bbf7d0; }
-
-        .hero-sub {
-            font-size: .98rem;
-            max-width: 30rem;
-            color: #d1d5db;
-            margin-bottom: 1.75rem;
-        }
-
-        .hero-badges {
-            display: flex;
-            flex-wrap: wrap;
-            gap: .5rem;
-            margin-bottom: 1.75rem;
-        }
-
-        .badge {
-            font-size: .75rem;
-            border-radius: 999px;
-            padding: .25rem .75rem;
-            border: 1px solid #374151;
-            color: #e5e7eb;
-        }
-
-        .badge-accent {
-            background-color: var(--accent-soft);
-            color: #065f46;
-            border-color: transparent;
-        }
-
-        .hero-cta {
-            display: flex;
-            flex-wrap: wrap;
-            gap: .75rem;
-            align-items: center;
-        }
-
-        .btn-primary {
-            background-color: var(--accent);
-            color: #ecfdf5;
-            padding: .7rem 1.6rem;
-            border-radius: 999px;
-            font-weight: 600;
-            font-size: .95rem;
-            border: none;
-            cursor: pointer;
-            display: inline-flex;
-            align-items: center;
-            gap: .4rem;
-        }
-
-        .btn-primary:hover { filter: brightness(1.05); }
-
-        .hero-card {
-            background-color: rgba(15,23,42,0.9);
-            border-radius: .9rem;
-            padding: 1.5rem 1.6rem;
-            border: 1px solid #1f2937;
-        }
-
-        .hero-metrics {
-            display: grid;
-            grid-template-columns: repeat(2,minmax(0,1fr));
-            gap: 1rem;
-            margin-top: 1rem;
-        }
-
-        .metric {
-            border-radius: .75rem;
-            background-color: #020617;
-            padding: .9rem;
-            border: 1px solid #111827;
-        }
-
-        .metric .value {
-            display: block;
-            font-weight: 600;
-            font-size: 1rem;
-            color: #bbf7d0;
-        }
-
-        .metric .label {
-            font-size: .75rem;
-            color: #9ca3af;
-        }
-
-        /* SECCIONES GENERALES */
-        section { padding: 3.5rem 0; }
-
-        section h2 {
-            font-size: 1.7rem;
-            margin: 0 0 .75rem 0;
-            text-align: left;
-        }
-
-        .section-subtitle {
-            font-size: .95rem;
-            color: var(--text-muted);
-            max-width: 34rem;
-        }
-
-        /* PROBLEMA */
-        .problem-grid {
-            display: grid;
-            grid-template-columns: minmax(0,1.6fr) minmax(0,1.4fr);
-            gap: 2rem;
-            margin-top: 2rem;
-        }
-
-        .problem-list {
-            list-style: none;
-            padding: 0;
-            margin: 0;
-        }
-
-        .problem-list li {
-            margin-bottom: .85rem;
-            padding-left: 1.6rem;
-            position: relative;
-            font-size: .95rem;
-        }
-
-        .problem-list li::before {
-            content: "✖";
-            color: #dc2626; /* rojo problemas */
-            font-weight: 700;
-            font-size: 1rem;
-            position: absolute;
-            left: 0;
-            top: 0;
-        }
-
-        .problem-card {
-            background-color: var(--bg-light);
-            border-radius: .9rem;
-            padding: 1.2rem 1.4rem;
-            border: 1px solid #e5e7eb;
-            font-size: .9rem;
-            color: var(--text-muted);
-        }
-
-        /* CALIDAD DE AIRE: ANTES / DESPUÉS */
-        .air-quality {
-            background-color: #f9fafb;
-        }
-
-        .air-grid {
-            margin-top: 2rem;
-            display: grid;
-            grid-template-columns: repeat(2,minmax(0,1fr));
-            gap: 1.5rem;
-        }
-
-        .state-card {
-            border-radius: 1rem;
-            padding: 1.3rem 1.4rem;
-            border: 1px solid #e5e7eb;
-            font-size: .9rem;
-        }
-
-        .state-card h3 {
-            margin-top: 0;
-            margin-bottom: .4rem;
-            font-size: 1rem;
-        }
-
-        .state-label {
-            display: inline-flex;
-            align-items: center;
-            gap: .35rem;
-            font-size: .8rem;
-            font-weight: 600;
-            letter-spacing: .08em;
-            text-transform: uppercase;
-        }
-
-        .state-bad {
-            background-color: #fef2f2;
-            border-color: #fecaca;
-        }
-
-        .state-bad .state-label {
-            color: #b91c1c;
-        }
-
-        .state-bad .state-label::before {
-            content: "✖";
-            font-weight: 700;
-        }
-
-        .state-good {
-            background-color: #ecfdf5;
-            border-color: #bbf7d0;
-        }
-
-        .state-good .state-label {
-            color: #047857;
-        }
-
-        .state-good .state-label::before {
-            content: "✔";
-            font-weight: 700;
-        }
-
-        .state-list {
-            list-style: none;
-            padding: 0;
-            margin: .6rem 0 0 0;
-        }
-
-        .state-list li {
-            font-size: .88rem;
-            margin-bottom: .4rem;
-        }
-
-        /* QUÉ ES OXIBAT */
-        .pill {
-            display: inline-block;
-            font-size: .78rem;
-            padding: .2rem .6rem;
-            border-radius: 999px;
-            background-color: var(--accent-soft);
-            color: #166534;
-            margin-bottom: .5rem;
-        }
-
-        .definition-box {
-            margin-top: 1.5rem;
-            padding: 1.5rem 1.8rem;
-            border-radius: 1.1rem;
-            border: 1.5px solid rgba(90, 190, 160, 0.35); /* borde verde agua tenue */
-            background-color: #F5FBF8; /* fondo verde agua muy suave */
-            font-size: .93rem;
-        }
-
-        .cols-2 {
-            display: grid;
-            grid-template-columns: repeat(2,minmax(0,1fr));
-            gap: 1.6rem;
-            margin-top: 1.8rem;
-        }
-
-        .list-check {
-            list-style: none;
-            padding: 0;
-            margin: 0;
-            font-size: .92rem;
-        }
-
-        .list-check li {
-            margin-bottom: .7rem;
-            padding-left: 1.6rem;
-            position: relative;
-        }
-
-        .list-check li::before {
-            content: "✓";
-            position: absolute;
-            left: 0;
-            color: #41C19E; /* verde oxígeno más suave */
-            font-size: .9rem;
-            font-weight: 700;
-        }
-
-        /* NOTA DE PATENTE */
-        .patent-note {
-            margin-top: 1rem;
-            padding-left: .8rem;
-            border-left: 3px solid var(--accent);
-            font-size: .8rem;
-            color: var(--text-muted);
-        }
-
-        /* BENEFICIOS */
-        .benefits-grid {
-            display: grid;
-            grid-template-columns: repeat(3,minmax(0,1fr));
-            gap: 1.4rem;
-            margin-top: 2rem;
-        }
-
-        .benefit-card {
-            background-color: white;
-            border-radius: .9rem;
-            padding: 1.2rem 1.4rem;
-            border: 1px solid #e5e7eb;
-            font-size: .9rem;
-        }
-
-        .benefit-tag {
-            display: inline-block;
-            font-size: .7rem;
-            text-transform: uppercase;
-            letter-spacing: .12em;
-            color: var(--text-muted);
-        }
-
-        /* COMO TRABAJAMOS */
-        .steps {
-            margin-top: 2rem;
-            display: grid;
-            grid-template-columns: repeat(4,minmax(0,1fr));
-            gap: 1rem;
-        }
-
-        .step {
-            border-radius: .9rem;
-            background-color: var(--bg-light);
-            border: 1px solid #e5e7eb;
-            padding: 1rem;
-            font-size: .88rem;
-        }
-
-        .step-num {
-            font-size: .8rem;
-            font-weight: 600;
-            color: var(--accent);
-            margin-bottom: .3rem;
-        }
-
-        /* SOBRE NOSOTROS */
-        .about-grid {
-            display: grid;
-            grid-template-columns: minmax(0,1.1fr) minmax(0,1fr);
-            gap: 2rem;
-            align-items: center;
-            margin-top: 2rem;
-        }
-
-        .about-photo {
-            width: 230px;
-            height: 230px;
-            border-radius: 999px;
-            object-fit: cover;
-            border: 3px solid var(--accent-soft);
-        }
-
-        .about-meta {
-            font-size: .8rem;
-            text-transform: uppercase;
-            letter-spacing: .12em;
-            color: var(--text-muted);
-            margin-bottom: .4rem;
-        }
-
-        /* VIDEO */
-        .video-section { background-color: var(--bg-light); }
-
-        .video-frame {
-            margin-top: 2rem;
-            position: relative;
-            width: 100%;
-            max-width: 760px;
-            padding-top: 56.25%;
-            border-radius: .9rem;
-            overflow: hidden;
-            border: 1px solid #e5e7eb;
-            background-color: #000;
-        }
-
-        .video-frame iframe {
-            position: absolute;
-            inset: 0;
-            width: 100%;
-            height: 100%;
-            border: 0;
-        }
-
-        /* CONTACTO */
-        .contact {
-            background-color: #020617;
-            color: #e5e7eb;
-        }
-
-        .contact-grid {
-            margin-top: 2rem;
-            display: grid;
-            grid-template-columns: minmax(0,1.4fr) minmax(0,1.2fr);
-            gap: 2rem;
-        }
-
-        .contact-form label {
-            font-size: .8rem;
-            margin-bottom: .25rem;
-            display: block;
-        }
-
-        .contact-form input,
-        .contact-form textarea {
-            width: 100%;
-            padding: .55rem .6rem;
-            border-radius: .5rem;
-            border: 1px solid #374151;
-            background-color: #020617;
-            color: #e5e7eb;
-            font-size: .85rem;
-            margin-bottom: .8rem;
-        }
-
-        .contact-form textarea { min-height: 110px; resize: vertical; }
-
-        .contact-form input:focus,
-        .contact-form textarea:focus {
-            outline: 1px solid var(--accent);
-            border-color: var(--accent);
-        }
-
-        .wa-btn {
-            display: inline-flex;
-            align-items: center;
-            gap: .4rem;
-            margin-top: .8rem;
-            padding: .6rem 1rem;
-            border-radius: 999px;
-            background-color: #22c55e;
-            color: #022c22;
-            font-size: .85rem;
-            font-weight: 600;
-        }
-
-        footer {
-            background-color: #020617;
-            color: #6b7280;
-            font-size: .75rem;
-            text-align: center;
-            padding: 1rem 0 1.4rem 0;
-            border-top: 1px solid #111827;
-        }
-
-        /* RESPONSIVE */
-        @media(max-width: 960px){
-            .hero-grid,
-            .problem-grid,
-            .cols-2,
-            .about-grid,
-            .contact-grid,
-            .air-grid {
-                grid-template-columns: 1fr;
-            }
-
-            .steps { grid-template-columns: repeat(2,1fr); }
-            .hero h1 { font-size: 2rem; }
-        }
-
-        @media(max-width: 640px){
-            .nav-right { display: none; }
-            .benefits-grid { grid-template-columns: 1fr; }
-            .steps { grid-template-columns: 1fr; }
-        }
-    </style>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Oxibat — Oxígeno Estable para Faenas de Altura</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=DM+Sans:wght@300;400;500&family=DM+Mono&display=swap" rel="stylesheet">
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --black: #050508;
+      --white: #f0f0ee;
+      --green: #00e87a;
+      --green-dim: rgba(0,232,122,0.08);
+      --green-line: rgba(0,232,122,0.25);
+      --gray: #888;
+      --gray2: #333;
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      background: var(--black);
+      color: var(--white);
+      font-family: 'DM Sans', sans-serif;
+      font-weight: 300;
+      overflow-x: hidden;
+    }
+
+    /* ── NAV ── */
+    nav {
+      position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+      display: flex; align-items: center; justify-content: space-between;
+      padding: 20px 48px;
+      background: linear-gradient(to bottom, rgba(5,5,8,0.95), transparent);
+    }
+    .nav-logo {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 1.8rem;
+      letter-spacing: 4px;
+      color: var(--white);
+      text-decoration: none;
+    }
+    .nav-logo span { color: var(--green); }
+    nav ul { display: flex; gap: 36px; list-style: none; }
+    nav ul a {
+      color: rgba(240,240,238,0.6);
+      text-decoration: none;
+      font-size: 0.78rem;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      transition: color 0.2s;
+    }
+    nav ul a:hover { color: var(--white); }
+    .nav-cta {
+      border: 1px solid var(--green-line);
+      color: var(--green) !important;
+      padding: 8px 20px;
+      border-radius: 2px;
+      transition: background 0.2s !important;
+    }
+    .nav-cta:hover { background: var(--green-dim) !important; color: var(--green) !important; }
+
+    /* ── HERO ── */
+    #hero {
+      position: relative;
+      height: 100vh; min-height: 700px;
+      display: flex; flex-direction: column;
+      align-items: center; justify-content: center;
+      text-align: center;
+      overflow: hidden;
+    }
+    .stars {
+      position: absolute; inset: 0;
+      background-image:
+        radial-gradient(1px 1px at 10% 15%, rgba(255,255,255,0.5) 0%, transparent 100%),
+        radial-gradient(1px 1px at 30% 60%, rgba(255,255,255,0.3) 0%, transparent 100%),
+        radial-gradient(1px 1px at 55% 25%, rgba(255,255,255,0.4) 0%, transparent 100%),
+        radial-gradient(1px 1px at 75% 70%, rgba(255,255,255,0.3) 0%, transparent 100%),
+        radial-gradient(1px 1px at 90% 40%, rgba(255,255,255,0.5) 0%, transparent 100%),
+        radial-gradient(1px 1px at 20% 85%, rgba(255,255,255,0.2) 0%, transparent 100%),
+        radial-gradient(1px 1px at 65% 50%, rgba(255,255,255,0.3) 0%, transparent 100%),
+        radial-gradient(1px 1px at 45% 90%, rgba(255,255,255,0.2) 0%, transparent 100%),
+        radial-gradient(2px 2px at 82% 12%, rgba(255,255,255,0.4) 0%, transparent 100%),
+        radial-gradient(2px 2px at 5% 48%, rgba(255,255,255,0.3) 0%, transparent 100%);
+    }
+    .hero-glow {
+      position: absolute;
+      width: 600px; height: 600px;
+      border-radius: 50%;
+      background: radial-gradient(circle, rgba(0,232,122,0.08) 0%, transparent 70%);
+      top: 50%; left: 50%; transform: translate(-50%, -50%);
+      animation: pulse 4s ease-in-out infinite;
+    }
+    @keyframes pulse {
+      0%, 100% { transform: translate(-50%, -50%) scale(1); opacity: 0.8; }
+      50% { transform: translate(-50%, -50%) scale(1.1); opacity: 1; }
+    }
+    .hero-eyebrow {
+      font-family: 'DM Mono', monospace;
+      font-size: 0.72rem;
+      letter-spacing: 4px;
+      color: var(--green);
+      text-transform: uppercase;
+      margin-bottom: 24px;
+      opacity: 0;
+      animation: fadeUp 1s 0.3s forwards;
+    }
+    .hero-title {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: clamp(4rem, 11vw, 10rem);
+      line-height: 0.9;
+      letter-spacing: 2px;
+      margin-bottom: 32px;
+      opacity: 0;
+      animation: fadeUp 1s 0.5s forwards;
+    }
+    .hero-title span { color: var(--green); }
+    .hero-sub {
+      font-size: clamp(1rem, 2vw, 1.2rem);
+      font-weight: 300;
+      color: rgba(240,240,238,0.65);
+      max-width: 600px;
+      line-height: 1.7;
+      margin-bottom: 48px;
+      opacity: 0;
+      animation: fadeUp 1s 0.7s forwards;
+    }
+    .hero-actions {
+      display: flex; gap: 16px; align-items: center;
+      opacity: 0;
+      animation: fadeUp 1s 0.9s forwards;
+    }
+    .btn-primary {
+      background: var(--green);
+      color: #000;
+      padding: 14px 36px;
+      border-radius: 2px;
+      font-weight: 500;
+      font-size: 0.85rem;
+      letter-spacing: 1px;
+      text-decoration: none;
+      text-transform: uppercase;
+      transition: opacity 0.2s;
+    }
+    .btn-primary:hover { opacity: 0.85; }
+    .btn-ghost {
+      border: 1px solid rgba(240,240,238,0.2);
+      color: var(--white);
+      padding: 14px 36px;
+      border-radius: 2px;
+      font-size: 0.85rem;
+      letter-spacing: 1px;
+      text-decoration: none;
+      text-transform: uppercase;
+      transition: border-color 0.2s;
+    }
+    .btn-ghost:hover { border-color: rgba(240,240,238,0.5); }
+    .hero-scroll {
+      position: absolute; bottom: 40px; left: 50%; transform: translateX(-50%);
+      display: flex; flex-direction: column; align-items: center; gap: 8px;
+      opacity: 0.4; animation: fadeUp 1s 1.2s forwards;
+    }
+    .hero-scroll span { font-size: 0.68rem; letter-spacing: 3px; text-transform: uppercase; }
+    .scroll-line {
+      width: 1px; height: 48px;
+      background: linear-gradient(to bottom, var(--white), transparent);
+      animation: scrollLine 2s ease-in-out infinite;
+    }
+    @keyframes scrollLine {
+      0% { transform: scaleY(0); transform-origin: top; }
+      50% { transform: scaleY(1); transform-origin: top; }
+      51% { transform: scaleY(1); transform-origin: bottom; }
+      100% { transform: scaleY(0); transform-origin: bottom; }
+    }
+    @keyframes fadeUp {
+      from { opacity: 0; transform: translateY(30px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    /* ── STATS ── */
+    #stats {
+      border-top: 1px solid var(--gray2);
+      border-bottom: 1px solid var(--gray2);
+      display: grid; grid-template-columns: repeat(4, 1fr);
+    }
+    .stat {
+      padding: 48px 32px;
+      border-right: 1px solid var(--gray2);
+      text-align: center;
+    }
+    .stat:last-child { border-right: none; }
+    .stat-num {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 3.5rem;
+      color: var(--green);
+      line-height: 1;
+      margin-bottom: 8px;
+    }
+    .stat-label {
+      font-size: 0.75rem;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      color: var(--gray);
+    }
+
+    /* ── SECTIONS ── */
+    section { padding: 120px 48px; max-width: 1200px; margin: 0 auto; }
+    .section-tag {
+      font-family: 'DM Mono', monospace;
+      font-size: 0.68rem;
+      letter-spacing: 4px;
+      color: var(--green);
+      text-transform: uppercase;
+      margin-bottom: 20px;
+      display: block;
+    }
+    h2 {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: clamp(2.5rem, 6vw, 5rem);
+      line-height: 1;
+      letter-spacing: 1px;
+      margin-bottom: 24px;
+    }
+    .section-lead {
+      font-size: 1.1rem;
+      color: rgba(240,240,238,0.65);
+      line-height: 1.8;
+      max-width: 620px;
+      margin-bottom: 64px;
+    }
+
+    /* ── PROBLEMA ── */
+    #problema { border-bottom: 1px solid var(--gray2); }
+    .problema-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 2px;
+      margin-top: 64px;
+    }
+    .problema-card {
+      background: #0c0c10;
+      padding: 40px;
+      border: 1px solid var(--gray2);
+      transition: border-color 0.3s;
+    }
+    .problema-card:hover { border-color: var(--green-line); }
+    .problema-icon {
+      font-size: 2rem;
+      margin-bottom: 20px;
+    }
+    .problema-card h3 {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 1.5rem;
+      letter-spacing: 1px;
+      margin-bottom: 12px;
+    }
+    .problema-card p {
+      font-size: 0.9rem;
+      color: rgba(240,240,238,0.6);
+      line-height: 1.7;
+    }
+
+    /* ── CAPITAL HUMANO (hero section) ── */
+    #capital {
+      max-width: 100%;
+      padding: 0;
+      background: #080810;
+      border-bottom: 1px solid var(--gray2);
+    }
+    .capital-inner {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 120px 48px;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 80px;
+      align-items: center;
+    }
+    .capital-left h2 { margin-bottom: 20px; }
+    .capital-left p {
+      font-size: 1rem;
+      color: rgba(240,240,238,0.65);
+      line-height: 1.8;
+      margin-bottom: 16px;
+    }
+    .cost-box {
+      margin-top: 40px;
+      border: 1px solid var(--green-line);
+      background: var(--green-dim);
+      padding: 28px 32px;
+      border-radius: 2px;
+    }
+    .cost-box .cost-label {
+      font-family: 'DM Mono', monospace;
+      font-size: 0.68rem;
+      letter-spacing: 3px;
+      color: var(--green);
+      text-transform: uppercase;
+      margin-bottom: 16px;
+    }
+    .cost-item {
+      display: flex;
+      justify-content: space-between;
+      font-size: 0.85rem;
+      padding: 8px 0;
+      border-bottom: 1px solid rgba(255,255,255,0.06);
+      color: rgba(240,240,238,0.75);
+    }
+    .cost-item:last-child { border-bottom: none; }
+    .cost-item .cost-val { color: var(--white); font-weight: 500; }
+    .capital-right {
+      display: flex;
+      flex-direction: column;
+      gap: 2px;
+    }
+    .flow-step {
+      background: #0c0c14;
+      border: 1px solid var(--gray2);
+      padding: 24px 28px;
+      display: flex;
+      align-items: flex-start;
+      gap: 20px;
+      transition: border-color 0.3s;
+    }
+    .flow-step:hover { border-color: var(--green-line); }
+    .flow-num {
+      font-family: 'DM Mono', monospace;
+      font-size: 0.7rem;
+      color: var(--green);
+      letter-spacing: 2px;
+      min-width: 32px;
+      margin-top: 2px;
+    }
+    .flow-step h4 {
+      font-size: 0.9rem;
+      font-weight: 500;
+      margin-bottom: 4px;
+    }
+    .flow-step p {
+      font-size: 0.82rem;
+      color: var(--gray);
+      line-height: 1.6;
+    }
+    .flow-arrow {
+      text-align: center;
+      color: var(--green);
+      font-size: 1.2rem;
+      padding: 4px 0;
+      opacity: 0.4;
+    }
+
+    /* ── TECNOLOGÍA ── */
+    #tecnologia { border-bottom: 1px solid var(--gray2); }
+    .tech-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 2px;
+      margin-top: 64px;
+    }
+    .tech-card {
+      background: #0a0a0e;
+      border: 1px solid var(--gray2);
+      padding: 40px 32px;
+      transition: border-color 0.3s, background 0.3s;
+    }
+    .tech-card:hover {
+      border-color: var(--green-line);
+      background: #0d0d14;
+    }
+    .tech-card-tag {
+      font-family: 'DM Mono', monospace;
+      font-size: 0.65rem;
+      letter-spacing: 3px;
+      color: var(--green);
+      text-transform: uppercase;
+      margin-bottom: 20px;
+    }
+    .tech-card h3 {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 1.6rem;
+      letter-spacing: 1px;
+      margin-bottom: 16px;
+    }
+    .tech-card p {
+      font-size: 0.85rem;
+      color: rgba(240,240,238,0.6);
+      line-height: 1.7;
+    }
+    .tech-specs {
+      margin-top: 24px;
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+    }
+    .spec-row {
+      display: flex;
+      justify-content: space-between;
+      font-size: 0.78rem;
+      color: var(--gray);
+      padding: 6px 0;
+      border-bottom: 1px solid rgba(255,255,255,0.05);
+    }
+    .spec-row span:last-child { color: var(--white); }
+
+    /* ── MAXIME ── */
+    #maxime {
+      max-width: 100%;
+      padding: 0;
+      background: #06060a;
+      border-top: 1px solid var(--gray2);
+      border-bottom: 1px solid var(--gray2);
+    }
+    .maxime-inner {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 120px 48px;
+    }
+    .maxime-visual {
+      margin: 64px 0;
+      border: 1px solid var(--gray2);
+      background: #0a0a10;
+      padding: 60px;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 4px;
+    }
+    .container-unit {
+      border: 1px solid var(--green-line);
+      background: var(--green-dim);
+      padding: 32px;
+      text-align: center;
+      transition: background 0.3s;
+    }
+    .container-unit:hover { background: rgba(0,232,122,0.12); }
+    .unit-label {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 1.3rem;
+      letter-spacing: 2px;
+      color: var(--green);
+      margin-bottom: 8px;
+    }
+    .unit-vol {
+      font-family: 'DM Mono', monospace;
+      font-size: 0.72rem;
+      color: var(--gray);
+      letter-spacing: 2px;
+    }
+    .maxime-benefits {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 24px;
+      margin-top: 48px;
+    }
+    .maxime-benefit {
+      padding: 24px;
+      border-top: 1px solid var(--green-line);
+    }
+    .maxime-benefit h4 {
+      font-size: 0.85rem;
+      font-weight: 500;
+      margin-bottom: 8px;
+    }
+    .maxime-benefit p {
+      font-size: 0.8rem;
+      color: var(--gray);
+      line-height: 1.6;
+    }
+
+    /* ── MERCADOS ── */
+    #mercados { border-bottom: 1px solid var(--gray2); }
+    .market-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 2px;
+      margin-top: 64px;
+    }
+    .market-card {
+      background: #0a0a0e;
+      border: 1px solid var(--gray2);
+      padding: 56px 48px;
+      transition: border-color 0.3s;
+    }
+    .market-card:hover { border-color: var(--green-line); }
+    .market-icon { font-size: 2.5rem; margin-bottom: 24px; display: block; }
+    .market-card h3 {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 2rem;
+      letter-spacing: 1px;
+      margin-bottom: 16px;
+    }
+    .market-card p {
+      font-size: 0.9rem;
+      color: rgba(240,240,238,0.6);
+      line-height: 1.8;
+      margin-bottom: 24px;
+    }
+    .market-examples {
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+    }
+    .market-example {
+      font-family: 'DM Mono', monospace;
+      font-size: 0.72rem;
+      color: var(--green);
+      letter-spacing: 1px;
+      padding: 6px 0;
+      border-bottom: 1px solid rgba(0,232,122,0.1);
+    }
+
+    /* ── MODELO ── */
+    #modelo {
+      max-width: 100%;
+      padding: 0;
+      background: #08080e;
+      border-bottom: 1px solid var(--gray2);
+    }
+    .modelo-inner {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 120px 48px;
+    }
+    .pricing-card {
+      border: 1px solid var(--green-line);
+      background: var(--green-dim);
+      padding: 64px;
+      margin-top: 64px;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 64px;
+      align-items: center;
+    }
+    .price-main .price-num {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 5rem;
+      color: var(--green);
+      line-height: 1;
+    }
+    .price-main .price-period {
+      font-size: 0.85rem;
+      color: var(--gray);
+      letter-spacing: 2px;
+      margin-top: 4px;
+    }
+    .price-main .price-desc {
+      font-size: 0.9rem;
+      color: rgba(240,240,238,0.65);
+      line-height: 1.7;
+      margin-top: 24px;
+      border-top: 1px solid rgba(0,232,122,0.15);
+      padding-top: 24px;
+    }
+    .price-includes h4 {
+      font-family: 'DM Mono', monospace;
+      font-size: 0.68rem;
+      letter-spacing: 3px;
+      color: var(--green);
+      text-transform: uppercase;
+      margin-bottom: 24px;
+    }
+    .include-item {
+      display: flex;
+      align-items: flex-start;
+      gap: 12px;
+      padding: 12px 0;
+      border-bottom: 1px solid rgba(255,255,255,0.06);
+      font-size: 0.85rem;
+      color: rgba(240,240,238,0.8);
+    }
+    .include-item:last-child { border-bottom: none; }
+    .include-check { color: var(--green); font-size: 0.9rem; margin-top: 1px; }
+
+    /* ── PATENTES ── */
+    #proteccion { border-bottom: 1px solid var(--gray2); }
+    .patent-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 2px;
+      margin-top: 64px;
+    }
+    .patent-card {
+      background: #0a0a0e;
+      border: 1px solid var(--gray2);
+      padding: 48px;
+      transition: border-color 0.3s;
+    }
+    .patent-card:hover { border-color: var(--green-line); }
+    .patent-num {
+      font-family: 'DM Mono', monospace;
+      font-size: 0.68rem;
+      letter-spacing: 3px;
+      color: var(--green);
+      margin-bottom: 16px;
+    }
+    .patent-card h3 {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 1.8rem;
+      letter-spacing: 1px;
+      margin-bottom: 16px;
+    }
+    .patent-card p {
+      font-size: 0.88rem;
+      color: rgba(240,240,238,0.6);
+      line-height: 1.7;
+    }
+
+    /* ── FUNDADOR ── */
+    #fundador {
+      max-width: 100%;
+      padding: 0;
+      background: #050508;
+      border-bottom: 1px solid var(--gray2);
+    }
+    .fundador-inner {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 120px 48px;
+      display: grid;
+      grid-template-columns: 1fr 1.4fr;
+      gap: 80px;
+      align-items: center;
+    }
+    .fundador-name {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 3.5rem;
+      letter-spacing: 2px;
+      line-height: 1;
+      margin-bottom: 8px;
+    }
+    .fundador-title {
+      font-family: 'DM Mono', monospace;
+      font-size: 0.72rem;
+      letter-spacing: 3px;
+      color: var(--green);
+      text-transform: uppercase;
+      margin-bottom: 32px;
+    }
+    .fundador-bio p {
+      font-size: 1rem;
+      color: rgba(240,240,238,0.65);
+      line-height: 1.8;
+      margin-bottom: 16px;
+    }
+    .fundador-skills {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-top: 32px;
+    }
+    .skill-tag {
+      border: 1px solid var(--gray2);
+      padding: 6px 14px;
+      font-size: 0.72rem;
+      letter-spacing: 1px;
+      color: var(--gray);
+      border-radius: 2px;
+    }
+
+    /* ── PROCESO ── */
+    #proceso { border-bottom: 1px solid var(--gray2); }
+    .steps {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 2px;
+      margin-top: 64px;
+    }
+    .step {
+      background: #0a0a0e;
+      border: 1px solid var(--gray2);
+      padding: 40px 32px;
+      transition: border-color 0.3s;
+    }
+    .step:hover { border-color: var(--green-line); }
+    .step-num {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 4rem;
+      color: rgba(0,232,122,0.12);
+      line-height: 1;
+      margin-bottom: 20px;
+    }
+    .step h4 {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 1.3rem;
+      letter-spacing: 1px;
+      margin-bottom: 12px;
+    }
+    .step p {
+      font-size: 0.82rem;
+      color: var(--gray);
+      line-height: 1.7;
+    }
+
+    /* ── CONTACTO ── */
+    #contacto {
+      max-width: 100%;
+      padding: 0;
+      background: #06060a;
+    }
+    .contacto-inner {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 120px 48px;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 80px;
+    }
+    .contacto-left h2 { margin-bottom: 20px; }
+    .contacto-left p {
+      font-size: 1rem;
+      color: rgba(240,240,238,0.65);
+      line-height: 1.8;
+      margin-bottom: 40px;
+    }
+    .contacto-direct {
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+    }
+    .contact-link {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+      text-decoration: none;
+      color: var(--white);
+      font-size: 0.9rem;
+      padding: 20px 24px;
+      border: 1px solid var(--gray2);
+      transition: border-color 0.3s;
+    }
+    .contact-link:hover { border-color: var(--green-line); color: var(--white); }
+    .contact-link-icon { font-size: 1.2rem; }
+    .contact-link-text { flex: 1; }
+    .contact-link-sub { font-size: 0.72rem; color: var(--gray); margin-top: 2px; }
+    .contact-link-arrow { color: var(--green); }
+    .form-group {
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+    }
+    .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+    .form-group input, .form-group textarea, .form-group select {
+      background: #0c0c14;
+      border: 1px solid var(--gray2);
+      color: var(--white);
+      padding: 14px 18px;
+      font-family: 'DM Sans', sans-serif;
+      font-size: 0.88rem;
+      outline: none;
+      transition: border-color 0.2s;
+      border-radius: 2px;
+    }
+    .form-group input:focus, .form-group textarea:focus, .form-group select:focus {
+      border-color: var(--green-line);
+    }
+    .form-group textarea { resize: vertical; min-height: 120px; }
+    .form-group select option { background: #0c0c14; }
+    ::placeholder { color: var(--gray); }
+    .form-submit {
+      background: var(--green);
+      color: #000;
+      border: none;
+      padding: 16px 36px;
+      font-family: 'DM Sans', sans-serif;
+      font-weight: 500;
+      font-size: 0.85rem;
+      letter-spacing: 1px;
+      text-transform: uppercase;
+      cursor: pointer;
+      transition: opacity 0.2s;
+      border-radius: 2px;
+      width: 100%;
+    }
+    .form-submit:hover { opacity: 0.85; }
+    .form-note {
+      font-size: 0.72rem;
+      color: var(--gray);
+      letter-spacing: 1px;
+      text-align: center;
+    }
+
+    /* ── FOOTER ── */
+    footer {
+      border-top: 1px solid var(--gray2);
+      padding: 40px 48px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    .footer-logo {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 1.4rem;
+      letter-spacing: 4px;
+      color: var(--white);
+    }
+    .footer-logo span { color: var(--green); }
+    .footer-legal {
+      font-size: 0.72rem;
+      color: var(--gray);
+      letter-spacing: 1px;
+      text-align: right;
+    }
+    .footer-legal .patent-badge {
+      color: var(--green);
+      margin-bottom: 4px;
+    }
+
+    /* ── SCROLL REVEAL ── */
+    .reveal {
+      opacity: 0;
+      transform: translateY(40px);
+      transition: opacity 0.8s ease, transform 0.8s ease;
+    }
+    .reveal.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    /* ── RESPONSIVE ── */
+    @media (max-width: 900px) {
+      nav ul { display: none; }
+      nav { padding: 20px 24px; }
+      #stats { grid-template-columns: 1fr 1fr; }
+      .stat { border-right: none; border-bottom: 1px solid var(--gray2); }
+      section { padding: 80px 24px; }
+      .capital-inner, .fundador-inner, .contacto-inner { grid-template-columns: 1fr; gap: 48px; }
+      .problema-grid, .tech-grid, .market-grid, .patent-grid { grid-template-columns: 1fr; }
+      .maxime-visual { grid-template-columns: 1fr; }
+      .pricing-card { grid-template-columns: 1fr; }
+      .steps { grid-template-columns: 1fr 1fr; }
+      .maxime-benefits { grid-template-columns: 1fr; }
+      .form-row { grid-template-columns: 1fr; }
+      footer { flex-direction: column; gap: 16px; text-align: center; }
+      .footer-legal { text-align: center; }
+      .maxime-inner, .modelo-inner, .fundador-inner .contacto-inner { padding: 80px 24px; }
+    }
+  </style>
 </head>
-
 <body>
 
-<header>
-    <div class="container nav">
-        <div class="nav-left">
-            <div class="nav-logo">
-                <img src="logo.jpeg" alt="Oxibat logo" style="width:42px; height:42px; object-fit:contain;">
-            </div>
-            <div class="nav-title">
-                <span>Oxibat</span>
-                <span>Oxígeno estable para faenas de altura</span>
-            </div>
-        </div>
-        <div class="nav-right">
-            <a href="#problema">Problema</a>
-            <a href="#oxibat">Tecnología</a>
-            <a href="#como-trabajamos">Implementación</a>
-            <a href="#contacto">Contacto</a>
-        </div>
-    </div>
-</header>
+<!-- NAV -->
+<nav>
+  <a href="#" class="nav-logo">OXI<span>BAT</span></a>
+  <ul>
+    <li><a href="#problema">El Problema</a></li>
+    <li><a href="#tecnologia">Tecnología</a></li>
+    <li><a href="#maxime">Sistema Maxime</a></li>
+    <li><a href="#mercados">Mercados</a></li>
+    <li><a href="#modelo">Arriendo</a></li>
+    <li><a href="#contacto" class="nav-cta">Contacto Técnico</a></li>
+  </ul>
+</nav>
 
 <!-- HERO -->
-<section class="hero">
-    <div class="container hero-grid">
-        <div>
-            <div class="hero-kicker">Biotecnología aplicada a minería</div>
+<div id="hero">
+  <div class="stars"></div>
+  <div class="hero-glow"></div>
+  <p class="hero-eyebrow">Biotecnología aplicada a altura extrema · Patente INAPI</p>
+  <h1 class="hero-title">EL AIRE<br>QUE TU<br>EQUIPO<br><span>MERECE</span></h1>
+  <p class="hero-sub">Sistema modular de biogeneración de oxígeno basado en Spirulina maxima. Diseñado para faenas mineras y observatorios sobre 3.000 msnm donde el talento escasea por las condiciones.</p>
+  <div class="hero-actions">
+    <a href="#contacto" class="btn-primary">Agendar Reunión Técnica</a>
+    <a href="#tecnologia" class="btn-ghost">Ver Tecnología</a>
+  </div>
+  <div class="hero-scroll">
+    <span>Scroll</span>
+    <div class="scroll-line"></div>
+  </div>
+</div>
 
-            <h1>Oxígeno <span>estable</span> y controlado para faenas sobre 3.000 msnm.</h1>
-
-            <p class="hero-sub">
-                Sistema modular de generación y manejo de oxígeno diseñado para salas de control,
-                casinos y dormitorios en altura, integrable al sistema de ventilación existente.
-            </p>
-
-            <div class="hero-badges">
-                <span class="badge">Operación continua 24/7</span>
-                <span class="badge">Integración a HVAC</span>
-                <span class="badge badge-accent">Ingeniería chilena</span>
-                <span class="badge">Solicitud de patente en trámite</span>
-            </div>
-
-            <div class="hero-cta">
-                <a href="#contacto" class="btn-primary">
-                    Agendar reunión técnica →
-                </a>
-                <small style="color:#9ca3af;">Reuniones 1:1 con ingeniería, no comerciales.</small>
-            </div>
-        </div>
-
-        <aside class="hero-card">
-            <h3>Foco en productividad y seguridad.</h3>
-            <p style="font-size:.85rem; color:#9ca3af;">
-                Oxibat nace desde ingeniería aplicada y experiencia real en faenas de altura.
-                El objetivo: mejorar condiciones ambientales con soluciones técnicamente sólidas,
-                no con promesas comerciales.
-            </p>
-
-            <div class="hero-metrics">
-                <div class="metric">
-                    <span class="value">3.000–4.500</span>
-                    <span class="label">msnm objetivo</span>
-                </div>
-                <div class="metric">
-                    <span class="value">Modular</span>
-                    <span class="label">Escalable por dotación</span>
-                </div>
-                <div class="metric">
-                    <span class="value">HVAC</span>
-                    <span class="label">Conexión directa</span>
-                </div>
-                <div class="metric">
-                    <span class="value">Biomasa</span>
-                    <span class="label">Reutilizable</span>
-                </div>
-            </div>
-        </aside>
-    </div>
-</section>
+<!-- STATS -->
+<div id="stats">
+  <div class="stat reveal">
+    <div class="stat-num">24%</div>
+    <div class="stat-label">Concentración O₂ validada</div>
+  </div>
+  <div class="stat reveal">
+    <div class="stat-num">2.000L</div>
+    <div class="stat-label">Spirulina por unidad Oxibat</div>
+  </div>
+  <div class="stat reveal">
+    <div class="stat-num">4.500</div>
+    <div class="stat-label">Metros sobre nivel del mar</div>
+  </div>
+  <div class="stat reveal">
+    <div class="stat-num">2</div>
+    <div class="stat-label">Patentes INAPI en trámite</div>
+  </div>
+</div>
 
 <!-- PROBLEMA -->
 <section id="problema">
-    <div class="container">
-        <h2>El problema en altura no es opinión: es fisiología.</h2>
-
-        <p class="section-subtitle">
-            A mayor altitud, menor presión parcial de oxígeno. El rendimiento cognitivo disminuye,
-            aumentando fatiga, errores y tiempos de respuesta.
-        </p>
-
-        <div class="problem-grid">
-            <div>
-                <ul class="problem-list">
-                    <li>Fatiga y menor concentración en turnos prolongados.</li>
-                    <li>Incremento de errores operacionales por hipoxia leve.</li>
-                    <li>Mayor rotación de personal y costos por capacitación y reemplazos.</li>
-                    <li>Dependencia de cilindros o PSA con logística compleja.</li>
-                    <li>Ambientes con ventilación no homogénea.</li>
-                </ul>
-            </div>
-
-            <div class="problem-card">
-                <strong>En simple:</strong><br><br>
-                No se trata solo de confort, sino de reducir la probabilidad de errores en ambientes
-                donde cada decisión tiene impacto en seguridad y continuidad operacional.
-            </div>
-        </div>
+  <span class="section-tag reveal">El Problema Real</span>
+  <h2 class="reveal">LA ALTURA<br>SE LLEVA<br>AL MEJOR<br>PERSONAL</h2>
+  <p class="section-lead reveal">A mayor altitud, menor presión parcial de oxígeno. El rendimiento cognitivo cae, la fatiga aumenta y el personal capacitado abandona la faena en cuanto puede. El costo no es solo humano — es operacional.</p>
+  <div class="problema-grid">
+    <div class="problema-card reveal">
+      <div class="problema-icon">🧠</div>
+      <h3>Hipoxia Crónica</h3>
+      <p>A 4.000 msnm la presión de O₂ representa el 60% de la disponible a nivel del mar. Fatiga cognitiva, tiempos de respuesta lentos y mayor probabilidad de errores en tareas de precisión.</p>
     </div>
+    <div class="problema-card reveal">
+      <div class="problema-icon">🔄</div>
+      <h3>Rotación Constante</h3>
+      <p>El personal calificado abandona faenas de altura en cuanto aparece una oportunidad mejor. La empresa reemplaza, capacita, y vuelve a perder. Un ciclo infinito y costoso.</p>
+    </div>
+    <div class="problema-card reveal">
+      <div class="problema-icon">💸</div>
+      <h3>Costo Real de Rotación</h3>
+      <p>Reemplazar un trabajador calificado en minería cuesta entre $11.500 y $31.000 USD en reclutamiento, traslado, capacitación y pérdida de productividad. Una faena mediana puede gastar $1.200.000 USD al año.</p>
+    </div>
+    <div class="problema-card reveal">
+      <div class="problema-icon">🛢️</div>
+      <h3>Soluciones Actuales Inadecuadas</h3>
+      <p>Los concentradores PSA son caros y consumen energía constante. Los cilindros de O₂ comprimido implican logística compleja, riesgo de incendio y dependencia de transporte a altitud extrema.</p>
+    </div>
+  </div>
 </section>
 
-<!-- CALIDAD DE AIRE: ANTES / DESPUÉS -->
-<section class="air-quality">
-    <div class="container">
-        <h2>Calidad de aire: antes y después con Oxibat.</h2>
-        <p class="section-subtitle">
-            El sistema no solo genera oxígeno: la solución líquida retiene parte del material particulado fino,
-            contribuyendo a ambientes interiores más limpios.
-        </p>
-
-        <div class="air-grid">
-            <div class="state-card state-bad">
-                <div class="state-label">Antes · Entorno “Malo”</div>
-                <h3>Ambiente típico en altura</h3>
-                <ul class="state-list">
-                    <li>Oxígeno reducido y mayor carga fisiológica.</li>
-                    <li>Material particulado fino en suspensión que ingresa por ventilación.</li>
-                    <li>Mayor rotación de personal → más licencias y costos por capacitación.</li>
-                    <li>Fatiga e irritación → mayor probabilidad de errores operacionales.</li>
-                </ul>
-            </div>
-
-            <div class="state-card state-good">
-                <div class="state-label">Después · Entorno “Bueno”</div>
-                <h3>Ambiente con Oxibat en operación</h3>
-                <ul class="state-list">
-                    <li>Generación y manejo de oxígeno desde bioreactores.</li>
-                    <li>Disminución de material particulado fino capturado en la solución.</li>
-                    <li>Ambiente más limpio para salas de control, casinos y dormitorios.</li>
-                </ul>
-            </div>
+<!-- CAPITAL HUMANO -->
+<div id="capital">
+  <div class="capital-inner">
+    <div class="capital-left">
+      <span class="section-tag reveal">La Ecuación de Negocio</span>
+      <h2 class="reveal">OXIBAT NO<br>VENDE O₂.<br>VENDE<br><span style="color:var(--green)">RETENCIÓN.</span></h2>
+      <p class="reveal">El verdadero negocio no es el oxígeno. Es que el ingeniero de procesos capacitado prefiera quedarse. Que el operador de sala de control no cometa el error que para la producción. Que el gerente de RRHH deje de explicar rotación en el directorio.</p>
+      <p class="reveal">Una faena que mejora sus condiciones de habitabilidad compite por talento con faenas a nivel del mar.</p>
+      <div class="cost-box reveal">
+        <div class="cost-label">Costo vs Beneficio por Unidad / Mes</div>
+        <div class="cost-item">
+          <span>Arriendo Oxibat</span>
+          <span class="cost-val" style="color:var(--green)">$1.500 USD</span>
         </div>
+        <div class="cost-item">
+          <span>Reemplazar 1 trabajador calificado</span>
+          <span class="cost-val">$11.500 – $31.000 USD</span>
+        </div>
+        <div class="cost-item">
+          <span>1 licencia médica por hipoxia</span>
+          <span class="cost-val">$3.000 – $5.000 USD</span>
+        </div>
+        <div class="cost-item">
+          <span>Oxibat se paga si retiene</span>
+          <span class="cost-val" style="color:var(--green)">1 persona / año</span>
+        </div>
+      </div>
     </div>
+    <div class="capital-right reveal">
+      <div class="flow-step">
+        <div class="flow-num">01</div>
+        <div>
+          <h4>Personal calificado llega a la faena</h4>
+          <p>Con o sin Oxibat, el problema comienza al llegar a altura.</p>
+        </div>
+      </div>
+      <div class="flow-arrow">↓</div>
+      <div class="flow-step">
+        <div class="flow-num" style="color:#ff6b6b">02</div>
+        <div>
+          <h4>Sin Oxibat: hipoxia crónica</h4>
+          <p>Mal dormir, mal comer, fatiga acumulada, errores frecuentes, baja de rendimiento.</p>
+        </div>
+      </div>
+      <div class="flow-arrow">↓</div>
+      <div class="flow-step" style="border-color:var(--green-line); background: var(--green-dim)">
+        <div class="flow-num">03</div>
+        <div>
+          <h4>Con Oxibat: condiciones normalizadas</h4>
+          <p>Comedores, dormitorios y salas de control con O₂ sobre 24%. El cuerpo descansa y rinde.</p>
+        </div>
+      </div>
+      <div class="flow-arrow">↓</div>
+      <div class="flow-step" style="border-color:var(--green-line)">
+        <div class="flow-num">04</div>
+        <div>
+          <h4>El talento se queda. La operación no para.</h4>
+          <p>Menos rotación, menos errores, menos licencias. ROI desde el primer mes.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- TECNOLOGÍA -->
+<section id="tecnologia">
+  <span class="section-tag reveal">Tecnología Oxibat</span>
+  <h2 class="reveal">BIOLOGÍA<br>QUE TRABAJA<br>MIENTRAS<br>USTED DUERME</h2>
+  <p class="section-lead reveal">Sistema de fotobiorreactores basado en Spirulina maxima, diseñado para operar en condiciones extremas de altitud, temperatura y radiación UV. Producción continua 24/7 sin intervención.</p>
+  <div class="tech-grid">
+    <div class="tech-card reveal">
+      <div class="tech-card-tag">Organismo</div>
+      <h3>Spirulina Maxima del Sáhara</h3>
+      <p>Cepa seleccionada por su adaptación natural a condiciones extremas: alta radiación UV, temperatura variable y altitud. Mayor tasa fotosintética que cepas comerciales estándar.</p>
+      <div class="tech-specs">
+        <div class="spec-row"><span>Concentración O₂</span><span>24%+</span></div>
+        <div class="spec-row"><span>pH óptimo</span><span>9.0 – 10.5</span></div>
+        <div class="spec-row"><span>Temperatura operación</span><span>25 – 35°C</span></div>
+        <div class="spec-row"><span>Biomasa residual</span><span>Biofertilizante</span></div>
+      </div>
+    </div>
+    <div class="tech-card reveal">
+      <div class="tech-card-tag">Estructura</div>
+      <h3>Policarbonato Doble Filtro UV</h3>
+      <p>El biorreactor utiliza policarbonato con doble filtro UV — no vidrio. Liviano, resistente a impacto, transparente para fotosíntesis y con aislación termopanel para retener calor en noches frías.</p>
+      <div class="tech-specs">
+        <div class="spec-row"><span>Material</span><span>Policarbonato UV</span></div>
+        <div class="spec-row"><span>Aislación</span><span>Termopanel doble cámara</span></div>
+        <div class="spec-row"><span>Control térmico</span><span>Calentadores + flujo aire</span></div>
+        <div class="spec-row"><span>Temperatura mínima exterior</span><span>–20°C</span></div>
+      </div>
+    </div>
+    <div class="tech-card reveal">
+      <div class="tech-card-tag">Control</div>
+      <h3>PLC + Sensores + IA</h3>
+      <p>Control industrial con PLC certificado para entornos extremos. Sensores de O₂, temperatura, luminosidad y turbidez alimentan un modelo de IA que predice y corrige la producción en tiempo real.</p>
+      <div class="tech-specs">
+        <div class="spec-row"><span>Control</span><span>PLC Industrial</span></div>
+        <div class="spec-row"><span>Sensores</span><span>O₂, Temp, Luz, Turbidez</span></div>
+        <div class="spec-row"><span>Iluminación</span><span>LEDs auto-ajustables</span></div>
+        <div class="spec-row"><span>Monitoreo</span><span>Tiempo real 24/7</span></div>
+      </div>
+    </div>
+    <div class="tech-card reveal">
+      <div class="tech-card-tag">Integración</div>
+      <h3>Conexión Directa a HVAC</h3>
+      <p>El O₂ producido se integra directamente al sistema de ventilación existente de la faena. Sin modificaciones estructurales, sin obra civil. Comedores, dormitorios y salas de control cubiertos.</p>
+      <div class="tech-specs">
+        <div class="spec-row"><span>Integración</span><span>HVAC existente</span></div>
+        <div class="spec-row"><span>Espacios cubiertos</span><span>Comedor, dorm., sala ctrl.</span></div>
+        <div class="spec-row"><span>Emisión EM</span><span>Ninguna</span></div>
+        <div class="spec-row"><span>Riesgo incendio</span><span>Cero</span></div>
+      </div>
+    </div>
+    <div class="tech-card reveal">
+      <div class="tech-card-tag">Diseño</div>
+      <h3>Modular Tipo LEGO</h3>
+      <p>Cada módulo es independiente. Si uno falla, los otros siguen operando. Mantenimiento sin parar el sistema. Reemplazo de piezas estandarizadas. Escalable según la dotación de la faena.</p>
+      <div class="tech-specs">
+        <div class="spec-row"><span>Redundancia</span><span>Total por módulo</span></div>
+        <div class="spec-row"><span>Mantenimiento</span><span>Sin parar sistema</span></div>
+        <div class="spec-row"><span>Escalabilidad</span><span>Modular por dotación</span></div>
+        <div class="spec-row"><span>Piezas</span><span>Estandarizadas</span></div>
+      </div>
+    </div>
+    <div class="tech-card reveal">
+      <div class="tech-card-tag">Subproducto</div>
+      <h3>Biomasa con Valor</h3>
+      <p>La Spirulina deshidratada residual tiene valor como biofertilizante de alto contenido nitrogenado. No hay residuo sin uso. El sistema genera valor más allá del oxígeno.</p>
+      <div class="tech-specs">
+        <div class="spec-row"><span>Residuo</span><span>Spirulina deshidratada</span></div>
+        <div class="spec-row"><span>Uso</span><span>Biofertilizante</span></div>
+        <div class="spec-row"><span>Contenido</span><span>Alto N, P, micronutrientes</span></div>
+        <div class="spec-row"><span>Residuo líquido</span><span>Cero</span></div>
+      </div>
+    </div>
+  </div>
 </section>
 
-<!-- QUÉ ES OXIBAT -->
-<section id="oxibat">
-    <div class="container">
-        <span class="pill">Descripción técnica</span>
-        <h2>Qué es Oxibat.</h2>
-
-        <p class="section-subtitle">
-            Sistema modular de biogeneración y manejo de oxígeno basado en microalgas fotosintéticas,
-            diseñado para operar a la intemperie e integrarse a ventilación existente.
-        </p>
-
-        <div class="definition-box">
-            <strong>Componentes principales:</strong>
-
-            <div class="cols-2">
-                <ul class="list-check">
-                    <li>Bioreactores iluminados con Spirulina.</li>
-                    <li>Sistema de compresión y manejo de gases.</li>
-                    <li>Módulo de almacenamiento y regulación.</li>
-                    <li>Sala de control electrónico y sensores.</li>
-                </ul>
-
-                <ul class="list-check">
-                    <li>Integración a ductos HVAC existentes.</li>
-                    <li>Sensores de nivel y temperatura.</li>
-                    <li>Diseño estructural para nieve y radiación.</li>
-                    <li>Disminución de material particulado fino retenido en la solución, con biomasa residual utilizable como biofertilizante (Spirulina deshidratada).</li>
-                </ul>
-            </div>
+<!-- MAXIME -->
+<div id="maxime">
+  <div class="maxime-inner">
+    <span class="section-tag reveal">Sistema Maxime</span>
+    <h2 class="reveal">CUATRO OXIBAT.<br>UN CONTAINER.<br>LISTA EN HORAS.</h2>
+    <p class="section-lead reveal">El sistema Maxime integra 4 unidades Oxibat en un container estándar de 20 pies. Llega en camión, se conecta al HVAC y comienza a operar. Sin obra civil, sin personal especializado en montaje, sin interrumpir la faena.</p>
+    <div class="maxime-visual reveal">
+      <div style="grid-column: 1 / -1; margin-bottom: 24px; display: flex; justify-content: space-between; align-items: center;">
+        <div>
+          <div style="font-family:'DM Mono',monospace; font-size:0.68rem; color:var(--green); letter-spacing:3px; margin-bottom:8px;">CONTAINER 20 PIES — 6.1m × 2.4m × 2.6m</div>
+          <div style="font-size:0.85rem; color:var(--gray);">8.000 litros totales de Spirulina activa</div>
         </div>
-
-        <!-- Render del sistema Oxibat -->
-        <div style="display:flex; justify-content:center; margin-top:2rem;">
-            <img src="oxi.jpeg"
-                 alt="Render del sistema Oxibat instalado en faena"
-                 style="width:100%; max-width:720px; border-radius:0.9rem;">
-        </div>
-
-        <!-- Nota formal de patente -->
-        <p class="patent-note">
-            <strong>Protección intelectual:</strong> la tecnología Oxibat cuenta con solicitud de patente en trámite
-            presentada ante INAPI en Chile. Esto respalda que el diseño técnico corresponde a desarrollo propio.
-        </p>
+        <div style="font-family:'DM Mono',monospace; font-size:0.72rem; color:var(--green); letter-spacing:2px;">VALOR SEGÚN DOTACIÓN Y FAENA</div>
+      </div>
+      <div class="container-unit">
+        <div class="unit-label">OXIBAT 01</div>
+        <div class="unit-vol">2.000L Spirulina</div>
+      </div>
+      <div class="container-unit">
+        <div class="unit-label">OXIBAT 02</div>
+        <div class="unit-vol">2.000L Spirulina</div>
+      </div>
+      <div class="container-unit">
+        <div class="unit-label">OXIBAT 03</div>
+        <div class="unit-vol">2.000L Spirulina</div>
+      </div>
+      <div class="container-unit">
+        <div class="unit-label">OXIBAT 04</div>
+        <div class="unit-vol">2.000L Spirulina</div>
+      </div>
     </div>
+    <div class="maxime-benefits">
+      <div class="maxime-benefit reveal">
+        <h4>Transporte Estándar</h4>
+        <p>Container de 20 pies certificado para transporte terrestre. No requiere logística especial para llegar a la faena.</p>
+      </div>
+      <div class="maxime-benefit reveal">
+        <h4>Instalación en Horas</h4>
+        <p>Conexión directa al sistema HVAC existente. Sin obra civil ni modificaciones estructurales.</p>
+      </div>
+      <div class="maxime-benefit reveal">
+        <h4>Redundancia Total</h4>
+        <p>Si un módulo requiere mantención, los tres restantes siguen operando. Continuidad garantizada.</p>
+      </div>
+      <div class="maxime-benefit reveal">
+        <h4>Escalable</h4>
+        <p>Más dotación requiere más O₂. Se agrega otro container Maxime. Simple.</p>
+      </div>
+      <div class="maxime-benefit reveal">
+        <h4>Activo Propio</h4>
+        <p>El container es propiedad de Oxibat. El cliente no invierte en activo. Solo arrienda el servicio.</p>
+      </div>
+      <div class="maxime-benefit reveal">
+        <h4>Retiro Flexible</h4>
+        <p>Si la faena cierra o cambian las condiciones, retiramos el sistema. Sin costo para el cliente.</p>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- RENDER VISUAL -->
+<div style="background:#06060a; border-top:1px solid #333; border-bottom:1px solid #333; padding:80px 48px; text-align:center;">
+  <span class="section-tag reveal" style="display:block; margin-bottom:16px;">Sistema en Faena</span>
+  <h2 class="reveal" style="font-family:'Bebas Neue',sans-serif; font-size:clamp(2rem,5vw,4rem); letter-spacing:1px; margin-bottom:40px;">ASÍ SE VE OXIBAT<br>INSTALADO</h2>
+  <div class="reveal" style="max-width:900px; margin:0 auto; border:1px solid #333; overflow:hidden;">
+    <img src="oxi.jpeg" alt="Render sistema Oxibat instalado en faena de altura" style="width:100%; display:block; object-fit:cover;">
+  </div>
+  <p class="reveal" style="margin-top:24px; font-size:0.75rem; color:#555; letter-spacing:3px; font-family:'DM Mono',monospace; text-transform:uppercase;">Render — Sistema Maxime en Faena de Altura</p>
+</div>
+
+<!-- MERCADOS -->
+<section id="mercados">
+  <span class="section-tag reveal">Mercados Objetivo</span>
+  <h2 class="reveal">DOS MERCADOS<br>CON EL MISMO<br>PROBLEMA</h2>
+  <p class="section-lead reveal">Minería de altura y observatorios astronómicos comparten el mismo desafío: personal altamente calificado que trabaja en condiciones de hipoxia crónica donde el error tiene consecuencias graves.</p>
+  <div class="market-grid">
+    <div class="market-card reveal">
+      <span class="market-icon">⛏️</span>
+      <h3>Minería de Altura</h3>
+      <p>Faenas sobre 3.000 msnm donde la hipoxia afecta la productividad, aumenta accidentes y genera rotación constante de personal técnico y operacional. El costo de rotación supera cualquier inversión en condiciones ambientales.</p>
+      <div class="market-examples">
+        <div class="market-example">→ Salas de control operacional</div>
+        <div class="market-example">→ Comedores y casinos de faena</div>
+        <div class="market-example">→ Dormitorios de personal técnico</div>
+        <div class="market-example">→ Chile, Perú, Bolivia, Argentina</div>
+      </div>
+    </div>
+    <div class="market-card reveal">
+      <span class="market-icon">🔭</span>
+      <h3>Observatorios Astronómicos</h3>
+      <p>Los observatorios más importantes del mundo están en el norte de Chile sobre 4.000 msnm. El personal científico trabaja turnos nocturnos de 8-12 horas donde la precisión cognitiva es crítica. Sin cilindros, sin interferencia electromagnética.</p>
+      <div class="market-examples">
+        <div class="market-example">→ ALMA — 5.058 msnm (Atacama)</div>
+        <div class="market-example">→ ESO Paranal — 2.635 msnm</div>
+        <div class="market-example">→ ELT Armazones — 3.064 msnm</div>
+        <div class="market-example">→ Cerro Tololo / NOIRLab</div>
+      </div>
+    </div>
+  </div>
 </section>
 
-<!-- BENEFICIOS -->
-<section>
-    <div class="container">
-        <h2>Beneficios medibles, no promesas.</h2>
-
-        <p class="section-subtitle">
-            El objetivo es entregar una plataforma técnica que mejore ambiente y operación,
-            con parámetros verificables.
-        </p>
-
-        <div class="benefits-grid">
-            <article class="benefit-card">
-                <div class="benefit-tag">Operación</div>
-                <h3>Suministro continuo con caudal regulado</h3>
-                <p>Ajuste de caudal y concentración según diseño de sala.</p>
-            </article>
-
-            <article class="benefit-card">
-                <div class="benefit-tag">Integración</div>
-                <h3>Compatible con infraestructura existente</h3>
-                <p>Se conecta directamente a la ventilación de la faena.</p>
-            </article>
-
-            <article class="benefit-card">
-                <div class="benefit-tag">Recursos</div>
-                <h3>Biomasa con valor</h3>
-                <p>Producto residual utilizable como biofertilizante.</p>
-            </article>
-
-            <article class="benefit-card">
-                <div class="benefit-tag">Gestión</div>
-                <h3>Variables monitoreadas en tiempo real</h3>
-                <p>Sensores y monitoreo para decisiones basadas en datos.</p>
-            </article>
-
-            <article class="benefit-card">
-                <div class="benefit-tag">Riesgo</div>
-                <h3>Menos logística crítica</h3>
-                <p>Menor dependencia de transporte de cilindros.</p>
-            </article>
-
-            <article class="benefit-card">
-                <div class="benefit-tag">Desarrollo</div>
-                <h3>Ingeniería local</h3>
-                <p>Diseño, construcción y soporte en Chile.</p>
-            </article>
-
-            <article class="benefit-card">
-                <div class="benefit-tag">HSEC</div>
-                <h3>Disminución de material particulado fino</h3>
-                <p>
-                    La solución líquida actúa como medio de captura de MP fino que ingresa por ventilación,
-                    contribuyendo a mejorar calidad de aire interior en salas de control, casinos y dormitorios.
-                </p>
-            </article>
+<!-- MODELO -->
+<div id="modelo">
+  <div class="modelo-inner">
+    <span class="section-tag reveal">Modelo Comercial</span>
+    <h2 class="reveal">ARRIENDO.<br>MANTENCIÓN<br>INCLUIDA.<br>SIN CAPEX.</h2>
+    <div class="pricing-card reveal">
+      <div class="price-main">
+        <div class="price-num" style="font-size:2.8rem; line-height:1.1">VALOR<br>A MEDIDA</div>
+        <div class="price-period">Cotización según faena · Sin costo</div>
+        <div class="price-desc">
+          Cada faena tiene condiciones distintas: altitud, dotación, acceso logístico y espacios a cubrir. El valor del arriendo se define después de una reunión técnica con parámetros reales.
+          <br><br>
+          Lo que sí es fijo: arriendo con mantención incluida. El cliente no compra activo ni asume riesgo tecnológico. Para la minera es OPEX puro.
+          <br><br>
+          <a href="#contacto" class="btn-primary" style="display:inline-block; margin-top:8px;">Solicitar Cotización Técnica</a>
         </div>
+      </div>
+      <div class="price-includes">
+        <h4>Incluido en el Arriendo</h4>
+        <div class="include-item">
+          <span class="include-check">✓</span>
+          <span>Suministro continuo de O₂ sobre 24% de concentración</span>
+        </div>
+        <div class="include-item">
+          <span class="include-check">✓</span>
+          <span>Mantención mensual del biorreactor y cultivo de Spirulina</span>
+        </div>
+        <div class="include-item">
+          <span class="include-check">✓</span>
+          <span>Monitoreo en tiempo real con sensores y sistema de alerta</span>
+        </div>
+        <div class="include-item">
+          <span class="include-check">✓</span>
+          <span>Reemplazo de módulos ante falla sin costo adicional</span>
+        </div>
+        <div class="include-item">
+          <span class="include-check">✓</span>
+          <span>Montaje e instalación inicial a cargo de Oxibat</span>
+        </div>
+        <div class="include-item">
+          <span class="include-check">✓</span>
+          <span>Retiro del sistema al término del contrato</span>
+        </div>
+        <div class="include-item">
+          <span class="include-check">✓</span>
+          <span>Biomasa residual disponible como biofertilizante</span>
+        </div>
+      </div>
     </div>
+  </div>
+</div>
+
+<!-- PROTECCIÓN -->
+<section id="proteccion">
+  <span class="section-tag reveal">Protección Intelectual</span>
+  <h2 class="reveal">DOS PATENTES.<br>TECNOLOGÍA<br>PROTEGIDA.</h2>
+  <p class="section-lead reveal">Oxibat protege tanto el proceso biológico como el sistema físico de despliegue. Desarrollo propio, verificable y respaldado legalmente ante INAPI Chile.</p>
+  <div class="patent-grid">
+    <div class="patent-card reveal">
+      <div class="patent-num">PATENTE 01 · INAPI CHILE</div>
+      <h3>Proceso Biológico</h3>
+      <p>Protege el uso de Spirulina maxima para generación de oxígeno en condiciones de altitud extrema. Cubre el proceso de cultivo, cepa seleccionada, condiciones de operación y el resultado de concentración de O₂ obtenido a gran altura.</p>
+    </div>
+    <div class="patent-card reveal">
+      <div class="patent-num">PATENTE 02 · INAPI CHILE</div>
+      <h3>Sistema Maxime</h3>
+      <p>Protege el sistema modular de 4 unidades Oxibat integradas en un container estándar de 20 pies. Cubre el diseño de integración, la arquitectura modular y el sistema de conexión a ventilación existente.</p>
+    </div>
+  </div>
 </section>
 
-<!-- COMO TRABAJAMOS -->
-<section id="como-trabajamos">
-    <div class="container">
-        <h2>Cómo trabajamos: ingeniería, no ventas.</h2>
-        <p class="section-subtitle">
-            Proceso claro, con decisiones técnicas verificables.
-        </p>
-
-        <div class="steps">
-            <div class="step">
-                <div class="step-num">01 · Levantamiento</div>
-                <h3>Reunión técnica</h3>
-                <p>Análisis de ubicación, altitud, dependencias y restricciones.</p>
-            </div>
-
-            <div class="step">
-                <div .class="step-num">02 · Ingeniería</div>
-                <h3>Diseño preliminar</h3>
-                <p>Configuración modular + integración HVAC.</p>
-            </div>
-
-            <div class="step">
-                <div class="step-num">03 · Implementación</div>
-                <h3>Montaje</h3>
-                <p>Construcción e instalación en sitio.</p>
-            </div>
-
-            <div class="step">
-                <div class="step-num">04 · Puesta en marcha</div>
-                <h3>Monitoreo</h3>
-                <p>Ajuste fino según operación real.</p>
-            </div>
-        </div>
+<!-- FUNDADOR -->
+<div id="fundador">
+  <div class="fundador-inner">
+    <div>
+      <div class="fundador-name reveal">GIAN-<br>FRANCO<br>PASTOR-<br>INI</div>
+      <div class="fundador-title reveal">Fundador · Ingeniero Civil Metalúrgico</div>
+      <div class="fundador-skills reveal">
+        <span class="skill-tag">Ing. Civil Metalúrgico</span>
+        <span class="skill-tag">Operaciones de Altura</span>
+        <span class="skill-tag">Electrónica Industrial</span>
+        <span class="skill-tag">Programación ESP32/PLC</span>
+        <span class="skill-tag">Biotecnología Aplicada</span>
+        <span class="skill-tag">Diseño de Sistemas</span>
+      </div>
     </div>
-</section>
-
-<!-- VIDEO -->
-<section class="video-section">
-    <div class="container">
-        <h2>Oxibat en contexto.</h2>
-
-        <p class="section-subtitle">
-            Presentación breve del tipo de problema que aborda.
-        </p>
-
-        <div class="video-frame">
-            <iframe src="https://www.youtube.com/embed/jCe5uW9SM3s?rel=0&showinfo=0"
-                title="Presentación Oxibat"
-                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-                allowfullscreen></iframe>
-        </div>
+    <div class="fundador-bio">
+      <p class="reveal">Oxibat nace desde experiencia real en faenas de altura, no desde un laboratorio. Como ingeniero en operaciones sobre 4.000 msnm, viví directamente el impacto de la hipoxia en el rendimiento y la rotación del personal calificado.</p>
+      <p class="reveal">Para resolver el problema, aprendí electrónica, programación de microcontroladores y sistemas embebidos por cuenta propia. Diseñé y construí el prototipo físico. Desarrollé el sistema de sensores y el modelo de IA. Gestioné dos solicitudes de patente ante INAPI. Construí la web. Y lo hice solo.</p>
+      <p class="reveal">Oxibat no es una idea en una presentación. Es un prototipo físico funcionando, con datos reales de producción, dos patentes en trámite y un modelo de negocio diseñado para la realidad de la industria minera chilena.</p>
+      <p class="reveal">Busco el primer cliente piloto. No busco inversión todavía. Busco una faena u observatorio dispuesto a validar el sistema en condiciones reales. Con ese dato, el resto es historia.</p>
     </div>
-</section>
+  </div>
+</div>
 
-<!-- SOBRE NOSOTROS -->
-<section>
-    <div class="container">
-        <h2>Quién está detrás.</h2>
-
-        <div class="about-grid">
-            <div>
-                <p class="about-meta">Fundador · Ingeniería · Operación</p>
-                <h3 style="margin-top:0;">Gianfranco Pastorini</h3>
-
-                <p style="font-size:.95rem;">
-                    Ingeniero Civil Metalúrgico con sólida formación en Ingeniería Industrial.
-                    Experiencia práctica en operaciones mineras a gran altitud, donde la baja
-                    disponibilidad de oxígeno afecta la seguridad, el desempeño y la productividad
-                    del personal.
-                </p>
-
-                <p style="font-size:.95rem;">
-                    Oxibat nace desde esa realidad operacional: desarrollar una solución técnica
-                    que reduzca el impacto fisiológico de la altura y mejore las condiciones de trabajo,
-                    sin interrumpir la operación. Tecnología diseñada para proteger a las personas y
-                    asegurar continuidad operacional en entornos desafiantes.
-                </p>
-
-                <p style="font-size:.92rem; color:var(--text-muted);">
-                    Foco absoluto en diseño robusto, verificable y operable bajo condiciones reales de minería.
-                </p>
-            </div>
-
-            <div style="display:flex; justify-content:center;">
-                <img src="yo.jpg" alt="Gianfranco Pastorini – Fundador de Oxibat" class="about-photo">
-            </div>
-        </div>
+<!-- PROCESO -->
+<section id="proceso">
+  <span class="section-tag reveal">Cómo Trabajamos</span>
+  <h2 class="reveal">INGENIERÍA,<br>NO VENTAS.</h2>
+  <p class="section-lead reveal">Sin presentaciones de PowerPoint. Sin promesas. Proceso técnico verificable con decisiones basadas en datos.</p>
+  <div class="steps">
+    <div class="step reveal">
+      <div class="step-num">01</div>
+      <h4>Reunión Técnica</h4>
+      <p>Análisis de altitud, dotación, espacios a cubrir y sistema de ventilación existente. Sin intermediarios — directamente con ingeniería.</p>
     </div>
+    <div class="step reveal">
+      <div class="step-num">02</div>
+      <h4>Diseño Preliminar</h4>
+      <p>Dimensionamiento del sistema Maxime según dotación y espacios. Configuración de módulos y punto de conexión HVAC.</p>
+    </div>
+    <div class="step reveal">
+      <div class="step-num">03</div>
+      <h4>Instalación</h4>
+      <p>Transporte, montaje y conexión a cargo de Oxibat. La faena no interrumpe operación. Sistema operativo en horas.</p>
+    </div>
+    <div class="step reveal">
+      <div class="step-num">04</div>
+      <h4>Monitoreo y Mantención</h4>
+      <p>Seguimiento continuo de producción de O₂, temperatura y estado del cultivo. Mantención mensual incluida en arriendo.</p>
+    </div>
+  </div>
 </section>
 
 <!-- CONTACTO -->
-<section id="contacto" class="contact">
-    <div class="container">
-        <h2>Contacto: conversación técnica.</h2>
-
-        <p class="section-subtitle" style="color:#9ca3af;">
-            Si hay posible encaje técnico, coordinemos una reunión para revisar parámetros y requerimientos.
-        </p>
-
-        <div class="contact-grid">
-            <div class="contact-form">
-                <form action="mailto:gian.pastorini@gmail.com" method="post" enctype="text/plain">
-                    <label>Nombre</label>
-                    <input type="text" name="nombre" required>
-
-                    <label>Empresa</label>
-                    <input type="text" name="empresa" required>
-
-                    <label>Cargo</label>
-                    <input type="text" name="cargo">
-
-                    <label>Correo electrónico</label>
-                    <input type="email" name="email" required>
-
-                    <label>Comentario / contexto</label>
-                    <textarea name="mensaje" placeholder="Ej: faena a 4.000 msnm, salas objetivo, dotación..."></textarea>
-
-                    <button type="submit" class="btn-primary">Coordinar reunión</button>
-                </form>
-            </div>
-
-            <div class="contact-card">
-                <strong>Contacto directo</strong>
-                <p style="margin-top:.6rem; margin-bottom:.4rem;">Atención personal, sin intermediarios.</p>
-
-                <a href="https://wa.me/56989087537" class="wa-btn" target="_blank">WhatsApp · Oxibat</a>
-
-                <p style="margin-top:1rem; font-size:.8rem; color:#6b7280;">
-                    También puedes escribir a <strong>gian.pastorini@gmail.com</strong>.
-                </p>
-            </div>
+<div id="contacto">
+  <div class="contacto-inner">
+    <div class="contacto-left">
+      <span class="section-tag reveal">Contacto</span>
+      <h2 class="reveal">CONVERSACIÓN<br>TÉCNICA.</h2>
+      <p class="reveal">Si hay posible encaje técnico entre las necesidades de su faena u observatorio y las capacidades actuales del sistema, coordinemos una reunión para revisar parámetros reales. Sin compromiso comercial.</p>
+      <div class="contacto-direct reveal">
+        <a href="https://wa.me/56989087537" class="contact-link" target="_blank">
+          <span class="contact-link-icon">💬</span>
+          <div class="contact-link-text">
+            <div>WhatsApp Directo</div>
+            <div class="contact-link-sub">+56 9 8908 7537 · Respuesta en horas</div>
+          </div>
+          <span class="contact-link-arrow">→</span>
+        </a>
+        <a href="/cdn-cgi/l/email-protection#f7909e9699d98796848398859e999eb7909a969e9bd994989a" class="contact-link">
+          <span class="contact-link-icon">✉️</span>
+          <div class="contact-link-text">
+            <div>Email Técnico</div>
+            <div class="contact-link-sub"><span class="__cf_email__" data-cfemail="cbaca2aaa5e5bbaab8bfa4b9a2a5a28baca6aaa2a7e5a8a4a6">[email&#160;protected]</span></div>
+          </div>
+          <span class="contact-link-arrow">→</span>
+        </a>
+        <a href="https://oxibat.com" class="contact-link" target="_blank">
+          <span class="contact-link-icon">🌐</span>
+          <div class="contact-link-text">
+            <div>oxibat.com</div>
+            <div class="contact-link-sub">Sitio web oficial</div>
+          </div>
+          <span class="contact-link-arrow">→</span>
+        </a>
+      </div>
+    </div>
+    <div class="reveal">
+      <div class="form-group">
+        <div class="form-row">
+          <input type="text" placeholder="Nombre">
+          <input type="text" placeholder="Empresa">
         </div>
+        <input type="text" placeholder="Cargo">
+        <input type="email" placeholder="Correo electrónico">
+        <select>
+          <option value="" disabled selected>Tipo de instalación</option>
+          <option>Faena minera sobre 3.000 msnm</option>
+          <option>Observatorio astronómico</option>
+          <option>Otra instalación en altura</option>
+          <option>Fondo de innovación / Academia</option>
+        </select>
+        <textarea placeholder="Altitud aproximada, dotación de personal, espacios a cubrir y cualquier restricción técnica relevante."></textarea>
+        <button class="form-submit" onclick="alert('Formulario recibido. Nos comunicaremos dentro de 24 horas.')">Coordinar Reunión Técnica</button>
+        <p class="form-note">REUNIÓN 1:1 CON INGENIERÍA · SIN INTERMEDIARIOS COMERCIALES</p>
+      </div>
     </div>
-</section>
+  </div>
+</div>
 
+<!-- FOOTER -->
 <footer>
-    <div class="container">
-        Oxibat · Sistema de oxígeno estable para faenas de altura · Solicitud de patente en trámite
-    </div>
+  <div class="footer-logo">OXI<span>BAT</span></div>
+  <div class="footer-legal">
+    <div class="patent-badge">⬡ 2 PATENTES INAPI EN TRÁMITE</div>
+    <div>Ingeniería chilena · Tecnología propia</div>
+    <div style="margin-top:4px; color: #555;">© 2025 Oxibat · Todos los derechos reservados</div>
+  </div>
 </footer>
 
-</body>
-</html>
-
+<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
+  // Scroll reveal
+  const reveals = document.querySelectorAll('.reveal');
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach((entry, i) => {
+   
